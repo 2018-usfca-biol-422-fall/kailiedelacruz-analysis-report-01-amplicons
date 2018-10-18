@@ -1,12 +1,13 @@
-# Analysis Report 1 for BIOL395
-# Using amplicon data to understand the microbiome
-## Due as a pull request on Wednesday, November 1st, 2017 before 11:30 am
+# Analysis Report 1 for BIOL422/423
+# Using amplicon data to understand the human skin microbiome
+## Completed analysis code due as a pull request on Sunday, October 28th, 2018 before 11:59 pm
+## Completed report due as additional commits to the same pull request by Sunday, November 4th, 2018 before 11:59 pm
 
-The **goal of this assignment** is to have you did even deeper into the Fierer *et al.* dataset, and build your skills in R, markdown, scientific writing, and exploratory data analysis.
+The **goal of this assignment** is to have you did even deeper into the full Fierer *et al.* dataset, and build your skills in R, markdown, git, exploratory data analysis and visualization, and scientific writing.
 
-The data we will be using is from the NCBI Sequence Read Archive study number ERP022657. A summary of the information is available [here](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_128047291_130.14.22.33_5555_1505945515_1626731749_0MetA0_S_HStore&query_key=5). The metadata from this study is included in the git repository for this assignment in a `data/metadata` directory.
+The data we will be using is from the NCBI Sequence Read Archive study number ERP022626. A summary of the information is available [here](https://www.ncbi.nlm.nih.gov/bioproject/PRJEB20471). The metadata from this study is included in the git repository for this assignment in a `data/metadata` directory.
 
-Here is the abstract from the [original study](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?study=ERP022657) by Fierer et al.:
+Here is the abstract from the [original study](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?study=ERP022626) by Fierer et al.:
 
 > Recent work has demonstrated that the diversity of skin-associated bacterial communities is far higher than previously recognized, with a high degree of interindividual variability in the composition of bacterial communities. Given that skin bacterial communities are personalized, we hypothesized that we could use the residual skin bacteria left on objects for forensic identification, matching the bacteria on the object to the skin-associated bacteria of the individual who touched the object. Here we describe a series of studies demonstrating the validity of this approach. We show that skin-associated bacteria can be readily recovered from surfaces (including single computer keys and computer mice) and that the structure of these communities can be used to differentiate objects handled by different individuals, even if those objects have been left untouched for up to 2 weeks at room temperature. Furthermore, we demonstrate that we can use a high-throughput pyrosequencing-based approach to quantitatively compare the bacterial communities on objects and skin to match the object to the individual with a high degree of certainty. Although additional work is needed to further establish the utility of this approach, this series of studies introduces a forensics approach that could eventually be used to independently evaluate results obtained using more traditional forensic practices.
 
@@ -14,7 +15,7 @@ For this assignment, you will only need to work in one file, the `Rmd` file enti
 
 This assignment very much builds on the work you did several weeks ago with the BLAST script and your analysis of the results. In this assignment we are digging deeper into the results using R. Just like last time, you should use your results as a launching off point to do some additional research on the taxa you find. You can use Google Scholar or some other tool to search the peer-reviewed literature. You are now responsible for finding and citing at least **five** additional peer-reviewed studies in your analysis report. 
 
-This report could focus in on, for example: different bacterial taxa on male vs female hands, or the similarity of mouse surfaces to student hands, or just what is found on computer mice, etc. It matters less to me what specific aspect of the data you focus on, and more important that you spend some time digging in to the data and developing and testing some hypotheses of your own about what is going on in this dataset.
+This report could focus in on, for example: different bacterial taxa on male vs female hands, or the similarity of keyboard surfaces to student hands, or just what is found on computer keys, etc. It matters less to me what specific aspect of the data you focus on, and more important that you spend some time digging in to the data and developing and testing some hypotheses of your own about what is going on in this dataset.
 
 Please follow the instructions carefully and read them all before getting started.
 
@@ -22,13 +23,13 @@ This first analysis report will be worth 50 points and will count for 12.5% of y
 
 The grading breakdown will be as follows:
 
-* 25 points - The report describes an analysis of the focal microbial dataset -- the analysis should not just be a set of unrelated figures, but should be a focused inquiry into some particular question or questions you have about the data. It should include appropriate background to motivate the investigation, one or more hypotheses, your quantitative results (including somewhere around 4-5 tables/figures beyond what is included already in the template), and a thorough discussion where you interpret your results. Report text should be: between 2500 and 3000 words (not counting code), well organized, free of spelling or grammar errors, and written in proper scientific writing style. You should use the built-in spell check in RStudio (there's a little button with ABC and a check mark near the knit button) to catch any spelling errors.
-* 5 points - At least 5 sources properly cited in the text of your report beyond the two examples I've already included. You should add proper BibTeX entries to the `references.bib` file. You can get these BibTeX reference entries from any bibliography management software or from Google Scholar. Then, once you've added each of them and given them a citekey on the first line of each reference, you can use the RStudio add-in from the `citr` package to cite these within your text as you're writing. Then when you knit the document, the sources will be properly formatted for you, and the Sources Cited will be properly populated for you at the end of the report. Doing this will be/was covered in class.
+* 25 points - The report describes an analysis of the focal microbial dataset -- the analysis should not just be a set of unrelated figures, but should be a focused inquiry into some particular question or questions you have about the data. It should include appropriate background to motivate the investigation, one or more hypotheses, your quantitative results (including somewhere around 4-5 tables/figures beyond what is included already in the template), and a thorough discussion where you interpret your results. Report text should be: between 2500 and 3000 words (not counting code), well organized, free of spelling or grammar errors, and written in proper scientific writing style. You should use the built-in spell check in RStudio (there's a little button with ABC and a check mark near the knit button) to catch any spelling errors, and check your word count with the [wordcountaddin for RStudio](https://github.com/benmarwick/wordcountaddin).
+* 5 points - At least 5 sources properly cited in the text of your report **beyond** the two examples I've already included. You should add proper BibTeX entries to the `references.bib` file. You can get these BibTeX reference entries from any bibliography management software or from Google Scholar. Then, once you've added each of them and given them a citekey on the first line of each reference, you can use the RStudio add-in from the `citr` package to cite these within your text as you're writing. Then when you knit the document, the sources will be properly formatted for you, and the Sources Cited will be properly populated for you at the end of the report. Doing this will be/was covered in class.
 * 5 points - R code chunks are appropriately commented, individually named, and well organized.
-* 5 points - Appropriate use of git to version control the steps, including adding files and making commits frequently as you work on this assignment, and writing informative and appropriately formatted commit messages. Can't have too many commits, but you can have too few! 
-* 10 points - Pull Request passes automated checks for file being able to be sucessfully knitted on another machine, as well as having all code style errors fixed. This is an all or nothing set of points, so please make sure your report passes these checks! You can submit your PR early to catch errors. Contact me well before the deadline if you are having trouble with this part of the assignment.
+* 5 points - Appropriate use of git to version control the steps, including adding files and making commits frequently as you work on this assignment, and writing informative and [appropriately formatted commit messages](https://chris.beams.io/posts/git-commit/). Can't have too many commits, but you can have too few! 
+* 10 points - Pull Request passes automated checks for file being able to be successfully knitted on another machine, as well as having all code style errors fixed. This is an all or nothing set of points, so please make sure your report passes these checks! You can submit your PR early to catch errors. Contact me well before the deadline if you are having trouble with this part of the assignment.
 
-You must submit your work as a Pull Request to the class organization ('2017-usfca-biol-395') on GitHub by 11:30 am on Wednesday, November 1st for full credit. We will also be peer reviewing the reports after they are submitted, as usual.
+You must submit all of your analysis code as a Pull Request to the class organization ('2018-usfca-biol-422-fall') on GitHub by 11:59 pm on Sunday, October 28th and then all of your writing by Sunday November 4th by 11:59 pm for full credit. We will also be peer reviewing the reports after they are submitted, as usual.
 
 Steps:
 
@@ -49,12 +50,12 @@ devtools::install_github("jimhester/lintr")
 and then whenever you want to check your code you can run at the R console in RStudio:
 
 ```r
-lint(filename = "Analysis_Report_01_amplicons.Rmd")
+lintr::lint(filename = "Analysis_Report_01_amplicons.Rmd")
 ```
 
 **Pro Tip** Save often, commit often, push often! If you have any questions or need clarification of what it is I'd like you to do, please ask me sooner rather than later so you stay on the right track for completing this assignment on time.
 
-**NOTE:** There are some files in this repository you may not have seen before. They are used for automating testing. 
+**NOTE:** There are some files in this repository used for automating testing. 
 
 ##### Infrastructure for Automated Software Testing
 
