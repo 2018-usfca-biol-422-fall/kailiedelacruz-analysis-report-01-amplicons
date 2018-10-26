@@ -294,23 +294,25 @@ plot_tree(phyloseq_obj,
 ```{r bar graph 1}
 # 
 melted_obj %>%
-  filter(sample_type == "skin") %>%
+  filter(sample_type == "surface") %>%
   ggplot(aes(x = Phylum,
              y = Abundance,
-             fill = Phylum,
-             color = Phylum)) +
+             fill = Phylum)) +
   geom_col(position = position_dodge()) +
+  ggtitle("Percent Abundance of Phylum in All Key Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 **Figure 4**: 
 ```{r bar graph 2}
-# Edit this to something more in common with skin surfaces 
+# 
 melted_obj %>%
-  filter(sample_type == "surface") %>%
-  ggplot(aes(x= Phylum,
-             y= Abundance)) +
+  filter(sample_source == "Fkey") %>%
+  ggplot(aes(x = Phylum,
+             y = Abundance,
+             fill = Phylum)) +
   geom_col(position = position_dodge()) +
+  ggtitle("Percent Abundance of Phylum in Fkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -318,23 +320,25 @@ melted_obj %>%
 ```{r bar graph 3}
 # 
 melted_obj %>%
-  filter(sample_source == "finger_tip") %>%
+  filter(sample_source == "Jkey") %>%
   ggplot(aes(x= Phylum,
              y = Abundance,
-             fill = Sex)) +
+             fill = Phylum)) +
   geom_col(position = position_dodge()) +
+  ggtitle("Percent abundance of Phylum in Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 **Figure 6**:
-```{r bar graph 4}
+```{r bar graph 3}
 # 
 melted_obj %>%
-  filter(sample_source == "finger_tip") %>%
-  ggplot(aes(x= Phylum,
+  filter(Phylum == "Fusobacteria") %>%
+  ggplot(aes(x = Genus,
              y = Abundance,
-             fill = age)) +
+             fill = Genus)) +
   geom_col(position = position_dodge()) +
+  ggtitle("Percent abundance of Class in Samples Containing Fusobacteria") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
