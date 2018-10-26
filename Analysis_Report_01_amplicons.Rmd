@@ -280,12 +280,6 @@ plot_richness(phyloseq_obj,
 
 **Figure 1**: Alpha diversity measures of the two sample types, colored by gender.
 
-```{r example-phyloseq-plot-2}
-# phylogeny, yay!
-plot_tree(phyloseq_obj,
-          color = "Sex",
-          ladderize = TRUE) # this arranges the tree branches from short to long
-```
 
 **Figure 2**: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents phylogeny inferred using FastTree.
 
@@ -300,39 +294,52 @@ plot_tree(phyloseq_obj,
 ```{r bar graph 1}
 # 
 melted_obj %>%
-  ggplot(aes(x= sample_source,
-             y= Abundance, 
-             fill= Phylum,
-             color= Phylum)) +
-  geom_col()
-  q + theme(axis.text.x=element_text(angle=90, hjust=1))
+  filter(sample_type == "skin") %>%
+  ggplot(aes(x = Phylum,
+             y = Abundance,
+             fill = Phylum,
+             color = Phylum)) +
+  geom_col(position = position_dodge())
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 **Figure 4**: 
 ```{r bar graph 2}
-# 
+# Edit this to something more in common with skin surfaces 
 melted_obj %>%
   filter(sample_type == "surface") %>%
-  ggplot(aes(x= sample_type,
+  ggplot(aes(x= Phylum,
              y= Abundance, 
              fill= Phylum,
              color= Phylum)) +
   geom_col(position = position_dodge())
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 **Figure 5**:
 ```{r bar graph 3}
 # 
 melted_obj %>%
-  filter(sample_source == "Space_bar") %>%
-  ggplot(aes(x= sample_source,
-             y= Abundance, 
-             fill= Phylum,
-             color= Phylum)) +
+  filter(sample_source == "finger_tip") %>%
+  ggplot(aes(x= Phylum,
+             y = Abundance,
+             fill = Sex)) +
   geom_col(position = position_dodge())
-  theme(axis.text.x = element_text(angle = 90,
-                                                 hjust = 1))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
+
+**Figure 6**:
+```{r bar graph 4}
+# 
+melted_obj %>%
+  filter(sample_source == "finger_tip") %>%
+  ggplot(aes(x= Phylum,
+             y = Abundance,
+             fill = age)) +
+  geom_col(position = position_dodge())
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
 # Discussion
 
 Add around 2-3 pages interpreting your results and considering future directions one might take in analyzing these data.
