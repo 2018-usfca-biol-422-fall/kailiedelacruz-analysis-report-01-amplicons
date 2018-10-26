@@ -299,7 +299,7 @@ melted_obj %>%
              y = Abundance,
              fill = Phylum,
              color = Phylum)) +
-  geom_col(position = position_dodge())
+  geom_col(position = position_dodge()) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -309,10 +309,8 @@ melted_obj %>%
 melted_obj %>%
   filter(sample_type == "surface") %>%
   ggplot(aes(x= Phylum,
-             y= Abundance, 
-             fill= Phylum,
-             color= Phylum)) +
-  geom_col(position = position_dodge())
+             y= Abundance)) +
+  geom_col(position = position_dodge()) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -324,7 +322,7 @@ melted_obj %>%
   ggplot(aes(x= Phylum,
              y = Abundance,
              fill = Sex)) +
-  geom_col(position = position_dodge())
+  geom_col(position = position_dodge()) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -336,7 +334,7 @@ melted_obj %>%
   ggplot(aes(x= Phylum,
              y = Abundance,
              fill = age)) +
-  geom_col(position = position_dodge())
+  geom_col(position = position_dodge()) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
