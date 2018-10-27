@@ -2778,7 +2778,7 @@ unname(taxa)
     ##  [796,] "Bacteria" "Proteobacteria"              "Betaproteobacteria"   
     ##  [797,] "Bacteria" "Bacteroidetes"               "Sphingobacteriia"     
     ##  [798,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
-    ##  [799,] "Bacteria" "Candidatus_Saccharibacteria" NA                     
+    ##  [799,] "Bacteria" NA                            NA                     
     ##  [800,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ##  [801,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ##  [802,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
@@ -3180,7 +3180,7 @@ unname(taxa)
     ## [1198,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1199,] "Bacteria" "Fusobacteria"                "Fusobacteriia"        
     ## [1200,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
-    ## [1201,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
+    ## [1201,] "Bacteria" "Bacteroidetes"               NA                     
     ## [1202,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
     ## [1203,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1204,] "Bacteria" "Firmicutes"                  "Negativicutes"        
@@ -3211,7 +3211,7 @@ unname(taxa)
     ## [1229,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1230,] "Bacteria" "Firmicutes"                  "Bacilli"              
     ## [1231,] "Bacteria" "Firmicutes"                  "Clostridia"           
-    ## [1232,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
+    ## [1232,] "Bacteria" "Bacteroidetes"               NA                     
     ## [1233,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1234,] "Bacteria" "Firmicutes"                  "Bacilli"              
     ## [1235,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
@@ -3298,7 +3298,7 @@ unname(taxa)
     ## [1316,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1317,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ## [1318,] "Bacteria" "Fusobacteria"                "Fusobacteriia"        
-    ## [1319,] "Bacteria" "Proteobacteria"              "Deltaproteobacteria"  
+    ## [1319,] "Bacteria" "Proteobacteria"              NA                     
     ## [1320,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1321,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ## [1322,] "Bacteria" "Bacteroidetes"               "Cytophagia"           
@@ -3318,7 +3318,7 @@ unname(taxa)
     ## [1336,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1337,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ## [1338,] "Bacteria" "Firmicutes"                  "Bacilli"              
-    ## [1339,] "Bacteria" "Proteobacteria"              NA                     
+    ## [1339,] "Bacteria" NA                            NA                     
     ## [1340,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1341,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
     ## [1342,] "Bacteria" "Firmicutes"                  "Bacilli"              
@@ -3695,7 +3695,7 @@ unname(taxa)
     ##  [179,] "Clostridiales"       "Ruminococcaceae"                  
     ##  [180,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XI"  
     ##  [181,] "Clostridiales"       "Lachnospiraceae"                  
-    ##  [182,] "Bacillales"          "Alicyclobacillaceae"              
+    ##  [182,] "Bacillales"          NA                                 
     ##  [183,] "Pseudomonadales"     "Pseudomonadaceae"                 
     ##  [184,] "Bacillales"          "Staphylococcaceae"                
     ##  [185,] "Bacteroidales"       "Bacteroidaceae"                   
@@ -3924,7 +3924,7 @@ unname(taxa)
     ##  [408,] "Pseudomonadales"     "Pseudomonadaceae"                 
     ##  [409,] "Actinomycetales"     "Propionibacteriaceae"             
     ##  [410,] "Chloroplast"         "Streptophyta"                     
-    ##  [411,] "Clostridiales"       NA                                 
+    ##  [411,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XIII"
     ##  [412,] "Lactobacillales"     "Streptococcaceae"                 
     ##  [413,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XI"  
     ##  [414,] "Clostridiales"       "Peptoniphilaceae"                 
@@ -4451,7 +4451,7 @@ unname(taxa)
     ##  [935,] "Clostridiales"       "Ruminococcaceae"                  
     ##  [936,] "Enterobacteriales"   "Enterobacteriaceae"               
     ##  [937,] "Bacillales"          "Staphylococcaceae"                
-    ##  [938,] "Bacillales"          NA                                 
+    ##  [938,] "Bacillales"          "Alicyclobacillaceae"              
     ##  [939,] "Bacteroidales"       "Prevotellaceae"                   
     ##  [940,] "Actinomycetales"     "Micrococcaceae"                   
     ##  [941,] "Flavobacteriales"    "Flavobacteriaceae"                
@@ -4527,7 +4527,7 @@ unname(taxa)
     ## [1011,] "Actinomycetales"     "Micrococcaceae"                   
     ## [1012,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1013,] "Flavobacteriales"    "Flavobacteriaceae"                
-    ## [1014,] "Clostridiales"       "Ruminococcaceae"                  
+    ## [1014,] "Clostridiales"       NA                                 
     ## [1015,] "Bacteroidales"       "Prevotellaceae"                   
     ## [1016,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1017,] "Xanthomonadales"     "Xanthomonadaceae"                 
@@ -4714,7 +4714,7 @@ unname(taxa)
     ## [1198,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1199,] "Fusobacteriales"     "Leptotrichiaceae"                 
     ## [1200,] "Flavobacteriales"    "Flavobacteriaceae"                
-    ## [1201,] "Bacteroidales"       "Rikenellaceae"                    
+    ## [1201,] NA                    NA                                 
     ## [1202,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1203,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1204,] "Selenomonadales"     "Veillonellaceae"                  
@@ -4745,7 +4745,7 @@ unname(taxa)
     ## [1229,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XI"  
     ## [1230,] "Lactobacillales"     "Aerococcaceae"                    
     ## [1231,] "Clostridiales"       "Peptostreptococcaceae"            
-    ## [1232,] "Bacteroidales"       NA                                 
+    ## [1232,] NA                    NA                                 
     ## [1233,] "Enterobacteriales"   "Enterobacteriaceae"               
     ## [1234,] "Lactobacillales"     "Carnobacteriaceae"                
     ## [1235,] "Flavobacteriales"    "Flavobacteriaceae"                
@@ -4798,7 +4798,7 @@ unname(taxa)
     ## [1282,] "Actinomycetales"     "Microbacteriaceae"                
     ## [1283,] "Actinomycetales"     "Actinomycetaceae"                 
     ## [1284,] "Sphingomonadales"    "Sphingomonadaceae"                
-    ## [1285,] "Bacillales"          "Alicyclobacillaceae"              
+    ## [1285,] "Bacillales"          NA                                 
     ## [1286,] "Actinomycetales"     "Corynebacteriaceae"               
     ## [1287,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1288,] "Sphingobacteriales"  "Sphingobacteriaceae"              
@@ -4894,7 +4894,7 @@ unname(taxa)
     ## [1378,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1379,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XI"  
     ## [1380,] "Deinococcales"       "Deinococcaceae"                   
-    ## [1381,] "Clostridiales"       NA                                 
+    ## [1381,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1382,] "Fusobacteriales"     "Fusobacteriaceae"                 
     ## [1383,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1384,] "Lactobacillales"     "Carnobacteriaceae"                
@@ -4935,7 +4935,7 @@ unname(taxa)
     ## [1419,] "Bacteroidales"       "Prevotellaceae"                   
     ## [1420,] "Sphingomonadales"    "Sphingomonadaceae"                
     ## [1421,] "Bacillales"          "Bacillales_Incertae_Sedis_XII"    
-    ## [1422,] "Bacillales"          "Alicyclobacillaceae"              
+    ## [1422,] "Bacillales"          NA                                 
     ## [1423,] "Cytophagales"        "Cytophagaceae"                    
     ## [1424,] "Bacillales"          "Bacillaceae_1"                    
     ## [1425,] "Clostridiales"       "Ruminococcaceae"                  
@@ -5041,8 +5041,8 @@ unname(taxa)
     ## [1525,] "Bacillales"          "Bacillaceae_1"                    
     ## [1526,] "Fusobacteriales"     "Fusobacteriaceae"                 
     ## [1527,] "Rhizobiales"         "Methylobacteriaceae"              
-    ## [1528,] "Bacillales"          NA                                 
-    ## [1529,] "Bacillales"          NA                                 
+    ## [1528,] "Bacillales"          "Alicyclobacillaceae"              
+    ## [1529,] "Bacillales"          "Staphylococcaceae"                
     ## [1530,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1531,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1532,] "Rhodospirillales"    "Rhodospirillaceae"                
@@ -5308,7 +5308,7 @@ unname(taxa)
     ##  [258,] "Streptococcus"                  
     ##  [259,] "Dorea"                          
     ##  [260,] "Faecalibacterium"               
-    ##  [261,] "Tumebacillus"                   
+    ##  [261,] NA                               
     ##  [262,] "Ralstonia"                      
     ##  [263,] "Lactobacillus"                  
     ##  [264,] NA                               
@@ -5458,11 +5458,11 @@ unname(taxa)
     ##  [408,] "Pseudomonas"                    
     ##  [409,] "Propionibacterium"              
     ##  [410,] NA                               
-    ##  [411,] NA                               
+    ##  [411,] "Anaerovorax"                    
     ##  [412,] "Streptococcus"                  
     ##  [413,] "Anaerococcus"                   
     ##  [414,] "Peptoniphilus"                  
-    ##  [415,] "Haemophilus"                    
+    ##  [415,] NA                               
     ##  [416,] "Prevotella"                     
     ##  [417,] "Roseburia"                      
     ##  [418,] "Faecalibacterium"               
@@ -5560,7 +5560,7 @@ unname(taxa)
     ##  [510,] "Collinsella"                    
     ##  [511,] "Pseudomonas"                    
     ##  [512,] "Acinetobacter"                  
-    ##  [513,] NA                               
+    ##  [513,] "Enterobacter"                   
     ##  [514,] "Methylobacterium"               
     ##  [515,] "Ralstonia"                      
     ##  [516,] "Dolosigranulum"                 
@@ -5622,7 +5622,7 @@ unname(taxa)
     ##  [572,] "Streptococcus"                  
     ##  [573,] "Gemella"                        
     ##  [574,] NA                               
-    ##  [575,] NA                               
+    ##  [575,] "Dorea"                          
     ##  [576,] "Fusobacterium"                  
     ##  [577,] "Gemella"                        
     ##  [578,] "Intestinibacter"                
@@ -5779,7 +5779,7 @@ unname(taxa)
     ##  [729,] "Acinetobacter"                  
     ##  [730,] "Streptococcus"                  
     ##  [731,] "Paracoccus"                     
-    ##  [732,] NA                               
+    ##  [732,] "Alloprevotella"                 
     ##  [733,] "Neisseria"                      
     ##  [734,] "Pseudomonas"                    
     ##  [735,] "Dietzia"                        
@@ -5834,12 +5834,12 @@ unname(taxa)
     ##  [784,] NA                               
     ##  [785,] "Sphingomonas"                   
     ##  [786,] "Gemella"                        
-    ##  [787,] "Enterobacter"                   
+    ##  [787,] NA                               
     ##  [788,] "Peptoniphilus"                  
     ##  [789,] "Enhydrobacter"                  
     ##  [790,] "Haemophilus"                    
     ##  [791,] "Duganella"                      
-    ##  [792,] NA                               
+    ##  [792,] "Alloprevotella"                 
     ##  [793,] "Massilia"                       
     ##  [794,] "Corynebacterium"                
     ##  [795,] "Streptococcus"                  
@@ -5920,7 +5920,7 @@ unname(taxa)
     ##  [870,] NA                               
     ##  [871,] "Pseudomonas"                    
     ##  [872,] "Porphyromonas"                  
-    ##  [873,] NA                               
+    ##  [873,] "Haemophilus"                    
     ##  [874,] "Arthrobacter"                   
     ##  [875,] "Actinomyces"                    
     ##  [876,] "Corynebacterium"                
@@ -5955,7 +5955,7 @@ unname(taxa)
     ##  [905,] "Acidovorax"                     
     ##  [906,] "Prevotella"                     
     ##  [907,] "Neisseria"                      
-    ##  [908,] NA                               
+    ##  [908,] "Arcanobacterium"                
     ##  [909,] "Capnocytophaga"                 
     ##  [910,] NA                               
     ##  [911,] "Fusicatenibacter"               
@@ -5985,7 +5985,7 @@ unname(taxa)
     ##  [935,] "Ruminococcus"                   
     ##  [936,] "Buchnera"                       
     ##  [937,] "Staphylococcus"                 
-    ##  [938,] NA                               
+    ##  [938,] "Tumebacillus"                   
     ##  [939,] "Prevotella"                     
     ##  [940,] "Rothia"                         
     ##  [941,] "Epilithonimonas"                
@@ -6075,7 +6075,7 @@ unname(taxa)
     ## [1025,] "Turicibacter"                   
     ## [1026,] "Caulobacter"                    
     ## [1027,] "Kocuria"                        
-    ## [1028,] "Actinoplanes"                   
+    ## [1028,] NA                               
     ## [1029,] "Centipeda"                      
     ## [1030,] "Anaerostipes"                   
     ## [1031,] "Acinetobacter"                  
@@ -6147,7 +6147,7 @@ unname(taxa)
     ## [1097,] "Haemophilus"                    
     ## [1098,] "Phenylobacterium"               
     ## [1099,] "Rothia"                         
-    ## [1100,] "Luteimonas"                     
+    ## [1100,] NA                               
     ## [1101,] "Anaerococcus"                   
     ## [1102,] "Rathayibacter"                  
     ## [1103,] "Anaerococcus"                   
@@ -6189,9 +6189,9 @@ unname(taxa)
     ## [1139,] NA                               
     ## [1140,] "Knoellia"                       
     ## [1141,] NA                               
-    ## [1142,] NA                               
-    ## [1143,] NA                               
-    ## [1144,] "Oscillibacter"                  
+    ## [1142,] "Anaerovorax"                    
+    ## [1143,] "Anaerostipes"                   
+    ## [1144,] NA                               
     ## [1145,] NA                               
     ## [1146,] "Porphyromonas"                  
     ## [1147,] "Peptoniphilus"                  
@@ -6248,7 +6248,7 @@ unname(taxa)
     ## [1198,] NA                               
     ## [1199,] "Leptotrichia"                   
     ## [1200,] "Capnocytophaga"                 
-    ## [1201,] "Alistipes"                      
+    ## [1201,] NA                               
     ## [1202,] "Parabacteroides"                
     ## [1203,] "Ruminococcus"                   
     ## [1204,] "Selenomonas"                    
@@ -6261,7 +6261,7 @@ unname(taxa)
     ## [1211,] NA                               
     ## [1212,] "Capnocytophaga"                 
     ## [1213,] "Bacteroides"                    
-    ## [1214,] NA                               
+    ## [1214,] "Clostridium_XlVa"               
     ## [1215,] "Prevotella"                     
     ## [1216,] "Macrococcus"                    
     ## [1217,] "Sphingomonas"                   
@@ -6303,7 +6303,7 @@ unname(taxa)
     ## [1253,] "Armatimonas/Armatimonadetes_gp1"
     ## [1254,] "Brachymonas"                    
     ## [1255,] "Abiotrophia"                    
-    ## [1256,] "Flavisolibacter"                
+    ## [1256,] NA                               
     ## [1257,] "Elizabethkingia"                
     ## [1258,] "Shuttleworthia"                 
     ## [1259,] "Granulicatella"                 
@@ -6332,7 +6332,7 @@ unname(taxa)
     ## [1282,] "Microbacterium"                 
     ## [1283,] "Actinomyces"                    
     ## [1284,] "Novosphingobium"                
-    ## [1285,] "Tumebacillus"                   
+    ## [1285,] NA                               
     ## [1286,] "Corynebacterium"                
     ## [1287,] "Porphyromonas"                  
     ## [1288,] "Pedobacter"                     
@@ -6383,7 +6383,7 @@ unname(taxa)
     ## [1333,] "Oscillibacter"                  
     ## [1334,] "Dyadobacter"                    
     ## [1335,] "Segetibacter"                   
-    ## [1336,] "Anaerovorax"                    
+    ## [1336,] NA                               
     ## [1337,] NA                               
     ## [1338,] "Enterococcus"                   
     ## [1339,] NA                               
@@ -6415,7 +6415,7 @@ unname(taxa)
     ## [1365,] NA                               
     ## [1366,] "Atopobium"                      
     ## [1367,] "Ruminococcus"                   
-    ## [1368,] "Selenomonas"                    
+    ## [1368,] NA                               
     ## [1369,] "Neisseria"                      
     ## [1370,] "Peptoniphilus"                  
     ## [1371,] "Pedobacter"                     
@@ -6424,7 +6424,7 @@ unname(taxa)
     ## [1374,] "Mogibacterium"                  
     ## [1375,] NA                               
     ## [1376,] "Paenibacillus"                  
-    ## [1377,] NA                               
+    ## [1377,] "Paenibacillus"                  
     ## [1378,] NA                               
     ## [1379,] "Anaerococcus"                   
     ## [1380,] "Deinococcus"                    
@@ -6529,7 +6529,7 @@ unname(taxa)
     ## [1479,] "Anaerococcus"                   
     ## [1480,] "Campylobacter"                  
     ## [1481,] "Prevotella"                     
-    ## [1482,] "Arcanobacterium"                
+    ## [1482,] NA                               
     ## [1483,] "Alloprevotella"                 
     ## [1484,] NA                               
     ## [1485,] "Aeromicrobium"                  
@@ -6567,7 +6567,7 @@ unname(taxa)
     ## [1517,] "Comamonas"                      
     ## [1518,] "Prevotella"                     
     ## [1519,] "Enterobacter"                   
-    ## [1520,] NA                               
+    ## [1520,] "Flavisolibacter"                
     ## [1521,] "Prevotella"                     
     ## [1522,] "Carnobacterium"                 
     ## [1523,] "Roseomonas"                     
@@ -6576,7 +6576,7 @@ unname(taxa)
     ## [1526,] "Fusobacterium"                  
     ## [1527,] "Methylobacterium"               
     ## [1528,] NA                               
-    ## [1529,] NA                               
+    ## [1529,] "Staphylococcus"                 
     ## [1530,] "Cruoricaptor"                   
     ## [1531,] "Chryseobacterium"               
     ## [1532,] "Skermanella"                    
