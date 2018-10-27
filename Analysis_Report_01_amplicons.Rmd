@@ -273,7 +273,6 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
 # Using this function though, makes it so that you are
 # only able to use dplyr and ggplot and not phyloseq
 melted_obj <- psmelt(phyloseq_obj)
-
 ```
 
 ```{r bar-graph-1}
