@@ -277,6 +277,11 @@ melted_obj <- psmelt(phyloseq_obj)
 ```
 
 ```{r bar-graph-1}
+# This graph represents the abundance of
+# each Phylum that is observed in all of the
+# key samples. This gives us a general idea of
+# the Phyla that we may see in graphs that look
+# at specific key samples
 melted_obj %>%
   filter(sample_type == "surface") %>%
   ggplot(aes(x = Phylum,
@@ -289,6 +294,12 @@ melted_obj %>%
 **Figure 1**:
 
 ```{r bar-graph-2}
+# This bar graph goes into detail about
+# the abundance of Phyla that is seen in
+# the Fkey samples compared to the Jkey
+# samples. Looking at the trends we can
+# think about a specific Phylum that we
+# want to look at
 melted_obj %>%
   filter(sample_source == "Fkey" |
            sample_source == "Jkey") %>%
@@ -302,6 +313,11 @@ melted_obj %>%
 **Figure 2**: 
 
 ```{r bar-graph-3}
+# This graph takes Actinobacteria, the
+# Phylum with the biggest difference between
+# the Fkey and Jkey samples and looks at the
+# Genus associated with it in correspondence to
+# the Fkey and Jkey samples
 melted_obj %>%
   filter(sample_source == "Fkey" |
            sample_source == "Jkey") %>%
@@ -316,6 +332,11 @@ melted_obj %>%
 **Figure 3**:
 
 ```{r bar-graph-4}
+# Seeing that there is an obvious difference in
+# the samples through Propionibacterium, this graph
+# focuses on the abundance of Propionibacterium
+# in the Fkey and Jkey samples in terms of
+# the host_subject_id
 melted_obj %>%
   filter(Genus == "Propionibacterium") %>%
     filter(sample_source == "Fkey" |
@@ -334,6 +355,10 @@ According to host_subject_id in Fkey and Jkey Samples") +
 **Figure 4**:
 
 ```{r table-1}
+# This table gives a summary of the results
+# of the previous graph. With this, you are
+# able to specifically reference the difference
+# between the abundances
 melted_obj %>%
   filter(Genus == "Propionibacterium") %>%
   filter(sample_source == "Fkey" |
