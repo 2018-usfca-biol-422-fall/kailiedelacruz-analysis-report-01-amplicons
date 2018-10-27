@@ -126,7 +126,7 @@ errors_forward_reads <- learnErrors(filtered_reads_path,
 ```{r visualize-errors-with-plots}
 # quick check to see if error models match data
 # (black lines match black points) and are generally decresing left to right
-plotErrors(errors_forward_reads, 
+plotErrors(errors_forward_reads,
            nominalQ = TRUE)
 ```
 
@@ -266,15 +266,17 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
                          tax_table(taxa), # taxonomy for each sequence variant
                          phy_tree(tree_in)) # phylogeny from sequence variants
 
-# Melt all files together. This creates one overall file that combines all of the data from the individual files. 
-# Before melting, taxonomy information would be seen in a separate file than information about the samples. Using this
-# function though, makes it so that you are only able to use dplyr and ggplot and not phyloseq 
+# Melt all files together. This creates one overall file that
+# combines all of the data from the individual files.
+# Before melting, taxonomy information would be seen in a
+# separate file than information about the samples.
+# Using this function though, makes it so that you are
+# only able to use dplyr and ggplot and not phyloseq
 melted_obj <- psmelt(phyloseq_obj)
 
 ```
 
 ```{r bar-graph-1}
-# 
 melted_obj %>%
   filter(sample_type == "surface") %>%
   ggplot(aes(x = Phylum,
@@ -284,10 +286,9 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in All Key Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 1**: 
+**Figure 1**:
 
 ```{r bar-graph-2}
-# 
 melted_obj %>%
   filter(sample_source == "Fkey" |
            sample_source == "Jkey") %>%
@@ -326,7 +327,8 @@ melted_obj %>%
              y = Abundance,
              fill = sample_source)) +
   geom_col(position = position_dodge()) +
-  ggtitle("Abundance of Proponiobacterium Sequences According to host_subject_id in Fkey and Jkey Samples") +
+  ggtitle("Abundance of Proponiobacterium
+According to host_subject_id in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 **Figure 4**:
