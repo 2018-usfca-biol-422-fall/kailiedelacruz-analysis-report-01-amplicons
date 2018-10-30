@@ -1,5 +1,5 @@
 ---
-title: "Analysis Report 1: The Difference Between Bacterial Communities on Right Pointer Fingers Compared to the Left"
+title: "Analysis Report 1: The Difference Between Bacterial Communities on Right Pointer Fingers Compared to Left Pointer Fingers"
 author: "Kailie Dela Cruz"
 date: "October 20, 2017"
 output: github_document
@@ -42,7 +42,9 @@ To determine the amount of distance between the pairs of bacterial communities, 
 
 ## Computational
 
-These are the methods you used. Should probably be at least a half of a page. At a very minimum should include citations for DADA2 [@callahan2016] and phyloseq [@mcmurdie2013]. Note that these don't count towards the five references you need to cite in the introduction.
+Given the data set from the Fierer et al. study, I extracted the sample and file names following the DADA2 tutorial [@callahan2016]. Specifically, the first step to this was to set the base path for our input data files. This means that we provide a path variable so that it points to the input data files on my machine. After defining a path variable, I sorted the samples to ensure that they were in order. With a sorted sample set, I then extracted the sample names, making the assumption that the files have the format of “SAMPLENAME.fastq.” Following this, I specified the full path needed to take to reach each of the filenames_forward_reads. After extracting the samples, sorting them, ensuring the format of the files and defining a path for them, I inspected the read quality profiles by plotting the quality profiles of all twenty samples. From doing this, I observed that most reads tend to display a drop off after around 200 bases. After filtering the files, I placed them into a created subdirectory named “filtered”.  I then trimmed the data from the filtered files discarding any sequences with Ns, allowing up to 3 expected errors, and cutting off the reads if quality gets as low as 2. To compare the read counts before and after trimming, I created a markdown table. The table showed that the number of read ins were very similar to the number of read outs in the fastq files. Next, continuing with the DADA2 pipeline, I learned the error rates of the data. Every set of data that deals with amplicons has a different set of error rates. This algorithm learns the error model of the dataset by interchanging the estimation of the error rates with the sample structure until they come together as one result. Using this algorithm, you generally need to begin with a prediction, which the maximum possible error rates in the data are used. The error will generally only rate if all of the sequences are errors except for the most abundant sequence. For this study, 28802208 total bases in 125531 reads from 115 samples were used for learning the error rates. There was convergence of the between the estimation of the error rates and the sample composition after 5 rounds. To visualize the errors, I generated plots. This provided the opportunity to check to see if error models match the data. Generally, the black lines match up to the black points in the plots and decrease from left to right.  After visualizing the learned error rates, I dereplicated the sequences or got rid of any duplicated sequences. In further detail, dereplication combines the duplicate sequences into one individual and unique sequence with the relevant abundance that is equal to the number of reads with that sequence. This DADA2 algorithm provides a summary of the quality information that is corresponding to each unique sequence. The overall quality profile of the unique sequences is based on the average of the positional qualities from the dereplicated reads. For this study, I named the dereplicated sequences by the appropriate sample names. At this point, I ran dada to obtain multiple diagnostics about the quality of each denoised sequence variant, the number of reads in the number of unique sequences in each of the samples, etc. To visualize the information obtained from running dada, I generated a sequence table and histogram. The tables rows read “samples” and its columns read “sequence variants.” The histogram which displayed the distribution of trimmed and denoised sequences, studied the sequence length in bp in relation to the frequency. The histogram revealed a unimodal distribution from about 190 base pairs to 270 base pairs. The data also showed 1-2 outliers ranging from 140 base pairs to 170 base pairs. Next, I checked for and removed any chimeras found in the data. Chimeras can be checked for by identifying them through the possibility of left and right segments to be constructed exactly from two more abundant “parent” sequences. For this study, out of the 1539 input sequences, there were 6 identified bimeras. Using the information gathered so far, I built a table showing how many sequences remain at each step of the pipeline. The columns of the table read “Input,” “Filtered,” “Denoised,” “Sequence Table,” and “Non-chimeric.” Following this, I assigned taxonomy to each sequence variant based on a supplied training set made up of unknown sequences. I exported the cleaned, trimmed, filtered, and denoised sequence variants in order to build a phylogeny to allow for the visualization of the taxonomy. I extracted the sequences to fasta because this is the format that is needed to build a phylogeny. 
+
+To begin building a phylogeny, I read in the metadata and the phylogeny, which was created from the fasta exported above in Geneious by aligning the sequences with MAFFT and then building a Maximum-Likelihood tree with RAxML. I then constructed a phyloseq object with all of the appropriate data, such as phylogeny from sequence variants, taxonomy for each sequence variant and metadata for each sample. In general, a phyloseq tool can be used to import, analyze, and graphically display phylogenetic sequencing data. It is helpful in reproducible interactive analysis and graphics of microbiome census data [@mcmurdie2013]. However, for this study, I continued by melting the phyloseq object, which puts all of the data for every sample in one file. 
 
 # Results
 
@@ -336,7 +338,7 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in All Key Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 1**: The Abundance of the Different Phylum That Are Observed in All of the Key Samples 
+**Figure 1**: The Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in All of the Key Samples 
 
 ```{r bar-graph-2}
 # This bar graph goes into detail about
@@ -355,7 +357,7 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 2**: The Abundance of the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples 
+**Figure 2**: The Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r bar-graph-3}
 # This graph takes Actinobacteria, the
@@ -375,7 +377,7 @@ melted_obj %>%
   ggtitle("Abundance of Genus in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 3**: The Abundance of the Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples 
+**Figure 3**: The Abundance of the Sequences Corresponding to Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r bar-graph-4}
 # Seeing that there is an obvious difference in
@@ -400,7 +402,7 @@ melted_obj %>%
 According to host_subject_id in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 4**: The Abundance of *Proponiobacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
+**Figure 4**: The Abundance of Sequences Corresponding to *Proponiobacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r table-1}
 # This table gives a summary of the results
