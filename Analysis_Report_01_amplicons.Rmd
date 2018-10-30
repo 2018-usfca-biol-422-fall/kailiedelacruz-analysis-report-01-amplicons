@@ -7,6 +7,10 @@ bibliography: references.bib
 csl: bioinformatics.csl
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 # Introduction
 
 Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
@@ -15,7 +19,26 @@ Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
 
 ## Sample origin and sequencing
 
-Add about half a page here. In this section instead of first person (I/we), use Fierer et al., since you'll just be describing what they did, based on the methods in their paper.
+### Sample Collection 
+
+For the keyboard samples, Fierer et al. swabbed individual keys of three personal computer keyboards. They swabbed about 25-30 keys per keyboard. With the owners and practically sole users of each keyboard, Fierer et al. then swabbed the skin of their ventral surface of the distal joint of each fingertip. 20-35 years of age, the owners of the keyboards were healthy during the time of sampling. Before swabbing, the keyboards had not been touched for more than 30 minutes. During sampling, the three keyboards and the corresponding fingertips were swabbed within 10 minutes of each other. To understand the similarities and differences between these three keyboards in relation to other keyboards, Fierer et al. gathered samples of spacebar keys were taken from 15 other keyboards found around the University of Colorado campus. They used autoclaved cotton-tipped swabs that were pre-moistened with a sterile solution to sample the skin surfaces and keyboard keys. Each key on the keyboards were swabbed with light pressure for 10 seconds.  They then stored the swabs at -80 C for less than 1 week before DNA extraction. 
+
+### DNA Extraction and Pyrosequencing 
+
+Fierer et al. extracted the genomic DNA from the swabs using the MO BIO PowerSoil Isolation kit. The cotton portions of the swabs that were frozen were added into bead tubes with Solution C1. The bead tubes were incubated for 10 minutes at 65 C and then shaken for 2 minutes. Shaken by the MO BIO vortex adapter, it was done horizontally at a maximum speed. 
+
+Fierer et al. amplified the 16SrRNA genes using the primer that is effective in phylogenetic analysis of pyrosequencing reads. They continued with polymerase chain reactions in forms of threes of 25-μL reactions with 06 μM forward and reverse primers, 3 μL template DNA and 1X of HotMasterMix. They ran thermal cycling with initial denaturation at 94 C for 3 minutes. They followed this with 35 cycles of denaturation at 94 C for 45 seconds. Annealing conditions were at 50 C for 30 seconds, extension conditions were at 72 C for 90 seconds and final extension conditions were at 72 C for 10 minutes. The replicate amplicons were cleaned using the UltraClean-htp 9g-well PCR Clean-up kit. Fierer et al. visualized the cleaned replicate amplicons on 0.1% agarose gels using SYBR Safe DNA gel stain. 
+
+Fierer et al. carried out pyrosequencing on a 454 Life Sciences Genome Sequencer FLX instrument by the Environmental Genomics Core Facility at the University of South Carolina. 
+
+### Sequence Analysis and Community Comparisons 
+
+Fierer et al. removed sequences from the analysis if they were more than 300 base pairs in length, less than 200 base pairs, had a quality score of less than 25, contained unknown variables, contained an uncorrectable barcode or did not contain the primer sequence. They assigned the remaining sequences to samples by examining the 12-nt-bar code. Sequences that were similar to each other were grouped into operational taxonomic units using cd-hit. These groups had a minimum coverage of 97% and a minimum identity of 97%.  They chose representative sequences from each operational taxonomic unit by selecting the longest sequence that had the largest number of hits to other sequences in the operational taxonomic unit. Fierer et al. aligned representative sequences using NAST and the Greengenes database that had a minimum alignment length of 150 and a minimum identity of 75%. They created a phylogenetic tree using Clearcut with Kimura’s two-parameter model. 
+
+Fierer et al. obtained a minimum of 800 quality sequences with sequences averaging 240 base pairs in length. 
+
+To determine the amount of distance between the pairs of bacterial communities, Fierer et al. used the UniFrac metric. These distances are based on the fraction of the branch length shared between two communities within a phylogenetic tree constructed from the 16S rRNA gene sequences from all communities being compared. A small UniFrac distance means that two communities are structurally similar, where lineages share a common evolutionary history. They used the analysis of similarities function in the PRIMER program to test for differences in community structure among the groups of samples. 
+
 
 ## Computational
 
@@ -23,7 +46,9 @@ These are the methods you used. Should probably be at least a half of a page. At
 
 # Results
 
-In addition to a minimum of 3-4 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the results section you just describe what you found, but you don't interpret it - that happens in the discussion.
+## Abundance of Phylum in All Key Samples
+
+I studied the abundance of sequences of each of the different phylum observed in all of the key samples. In analyzing the individual phylum that were gathered from the key samples, there were 7 that displayed abundance values, meaning that there are 7 different phylum found on all of the different keys. With Actinobacteria having the largest abundance of sequences at around 470-480,000, Firmicutes has the second largest abundance of sequences at around 225,000. 
 
 ```{r load-libraries, message = FALSE}
 # Be sure to install these packages before running this script
@@ -280,17 +305,18 @@ melted_obj <- psmelt(phyloseq_obj)
 # each Phylum that is observed in all of the
 # key samples. This gives us a general idea of
 # the Phyla that we may see in graphs that look
-# at specific key samples
+# at specific key samples. We could have also filtered 
+# finger_tip in sample_source and we would have obtained
+# the same results 
 melted_obj %>%
   filter(sample_type == "surface") %>%
   ggplot(aes(x = Phylum,
-             y = Abundance,
-             fill = Phylum)) +
+             y = Abundance)) +
   geom_col() +
   ggtitle("Abundance of Phylum in All Key Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 1**:
+**Figure 1**: The Abundance of the Different Phylum That Are Observed in All of the Key Samples 
 
 ```{r bar-graph-2}
 # This bar graph goes into detail about
@@ -309,14 +335,15 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 2**: 
+**Figure 2**: The Abundance of the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r bar-graph-3}
 # This graph takes Actinobacteria, the
 # Phylum with the biggest difference between
 # the Fkey and Jkey samples and looks at the
 # Genus associated with it in correspondence to
-# the Fkey and Jkey samples
+# the Fkey and Jkey samples. This is why we filter the 
+# Fkey, Jkey and Actinobacteria 
 melted_obj %>%
   filter(sample_source == "Fkey" |
            sample_source == "Jkey") %>%
@@ -328,14 +355,16 @@ melted_obj %>%
   ggtitle("Abundance of Genus in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 3**:
+**Figure 3**: The Abundance of the Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r bar-graph-4}
 # Seeing that there is an obvious difference in
 # the samples through Propionibacterium, this graph
 # focuses on the abundance of Propionibacterium
 # in the Fkey and Jkey samples in terms of
-# the host_subject_id
+# the host_subject_id. M2 Corresponds to Jkey samples, 
+# M3 corresponds to Jkey and Fkey samples and M9 
+# corresponds to Fkey sampeles 
 melted_obj %>%
   filter(Genus == "Propionibacterium") %>%
     filter(sample_source == "Fkey" |
@@ -351,7 +380,7 @@ melted_obj %>%
 According to host_subject_id in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 4**:
+**Figure 4**: The Abundance of *Proponiobacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
 
 ```{r table-1}
 # This table gives a summary of the results
@@ -368,7 +397,7 @@ melted_obj %>%
   group_by(host_subject_id, sample_source) %>%
   summarize(sum_seqs = sum(Abundance))
 ```
-**Table 1**:
+**Table 1**: A Summary of the Abundace of Sequences of *Propionibacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
 
 # Discussion
 
