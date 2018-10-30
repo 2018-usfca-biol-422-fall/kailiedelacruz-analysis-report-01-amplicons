@@ -1,5 +1,5 @@
 ---
-title: "Analysis Report 1: Your Title Here"
+title: "Analysis Report 1: The Difference Between Bacterial Communities on Right Pointer Fingers Compared to the Left"
 author: "Kailie Dela Cruz"
 date: "October 20, 2017"
 output: github_document
@@ -21,7 +21,7 @@ Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
 
 ### Sample Collection 
 
-For the keyboard samples, Fierer et al. swabbed individual keys of three personal computer keyboards. They swabbed about 25-30 keys per keyboard. With the owners and practically sole users of each keyboard, Fierer et al. then swabbed the skin of their ventral surface of the distal joint of each fingertip. 20-35 years of age, the owners of the keyboards were healthy during the time of sampling. Before swabbing, the keyboards had not been touched for more than 30 minutes. During sampling, the three keyboards and the corresponding fingertips were swabbed within 10 minutes of each other. To understand the similarities and differences between these three keyboards in relation to other keyboards, Fierer et al. gathered samples of spacebar keys were taken from 15 other keyboards found around the University of Colorado campus. They used autoclaved cotton-tipped swabs that were pre-moistened with a sterile solution to sample the skin surfaces and keyboard keys. Each key on the keyboards were swabbed with light pressure for 10 seconds.  They then stored the swabs at -80 C for less than 1 week before DNA extraction. 
+For the keyboard samples, Fierer et al. swabbed about 25-30 individual keys of three personal computer keyboards. They then swabbed the skin of the ventral surface of the distal joint of each fingertip of the owners that corresponded with the computer keyboards. 20-35 years of age, the owners of the keyboards were healthy during the time of sampling. Before swabbing, the keyboards had not been touched for more than 30 minutes. During sampling, the three keyboards and the corresponding fingertips were swabbed within 10 minutes of each other. To understand the similarities and differences between these three keyboards in relation to other keyboards, Fierer et al. gathered samples of spacebar keys were taken from 15 other keyboards found around the University of Colorado campus. They used autoclaved and pre-moistened cotton-tipped swabs to sample the skin surfaces and keyboard keys. For about 10 secibds, they swabbed each key with light amounts of pressure. They then stored the swabs at -80 C for less than 1 week before DNA extraction. 
 
 ### DNA Extraction and Pyrosequencing 
 
