@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
-Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
+
 
 # Methods
 
@@ -42,35 +42,14 @@ To determine the amount of distance between the pairs of bacterial communities, 
 
 ## Computational
 
+### DADA2
+
 Given the data set from the Fierer et al. study, I extracted the sample and file names following the DADA2 tutorial [@callahan2016]. Specifically, the first step to this was to set the base path for our input data files. This means that we provide a path variable so that it points to the input data files on my machine. After defining a path variable, I sorted the samples to ensure that they were in order. With a sorted sample set, I then extracted the sample names, making the assumption that the files have the format of “SAMPLENAME.fastq.” Following this, I specified the full path needed to take to reach each of the filenames_forward_reads. After extracting the samples, sorting them, ensuring the format of the files and defining a path for them, I inspected the read quality profiles by plotting the quality profiles of all twenty samples. From doing this, I observed that most reads tend to display a drop off after around 200 bases. After filtering the files, I placed them into a created subdirectory named “filtered”.  I then trimmed the data from the filtered files discarding any sequences with Ns, allowing up to 3 expected errors, and cutting off the reads if quality gets as low as 2. To compare the read counts before and after trimming, I created a markdown table. The table showed that the number of read ins were very similar to the number of read outs in the fastq files. Next, continuing with the DADA2 pipeline, I learned the error rates of the data. Every set of data that deals with amplicons has a different set of error rates. This algorithm learns the error model of the dataset by interchanging the estimation of the error rates with the sample structure until they come together as one result. Using this algorithm, you generally need to begin with a prediction, which the maximum possible error rates in the data are used. The error will generally only rate if all of the sequences are errors except for the most abundant sequence. For this study, 28802208 total bases in 125531 reads from 115 samples were used for learning the error rates. There was convergence of the between the estimation of the error rates and the sample composition after 5 rounds. To visualize the errors, I generated plots. This provided the opportunity to check to see if error models match the data. Generally, the black lines match up to the black points in the plots and decrease from left to right.  After visualizing the learned error rates, I dereplicated the sequences or got rid of any duplicated sequences. In further detail, dereplication combines the duplicate sequences into one individual and unique sequence with the relevant abundance that is equal to the number of reads with that sequence. This DADA2 algorithm provides a summary of the quality information that is corresponding to each unique sequence. The overall quality profile of the unique sequences is based on the average of the positional qualities from the dereplicated reads. For this study, I named the dereplicated sequences by the appropriate sample names. At this point, I ran dada to obtain multiple diagnostics about the quality of each denoised sequence variant, the number of reads in the number of unique sequences in each of the samples, etc. To visualize the information obtained from running dada, I generated a sequence table and histogram. The tables rows read “samples” and its columns read “sequence variants.” The histogram which displayed the distribution of trimmed and denoised sequences, studied the sequence length in bp in relation to the frequency. The histogram revealed a unimodal distribution from about 190 base pairs to 270 base pairs. The data also showed 1-2 outliers ranging from 140 base pairs to 170 base pairs. Next, I checked for and removed any chimeras found in the data. Chimeras can be checked for by identifying them through the possibility of left and right segments to be constructed exactly from two more abundant “parent” sequences. For this study, out of the 1539 input sequences, there were 6 identified bimeras. Using the information gathered so far, I built a table showing how many sequences remain at each step of the pipeline. The columns of the table read “Input,” “Filtered,” “Denoised,” “Sequence Table,” and “Non-chimeric.” Following this, I assigned taxonomy to each sequence variant based on a supplied training set made up of unknown sequences. I exported the cleaned, trimmed, filtered, and denoised sequence variants in order to build a phylogeny to allow for the visualization of the taxonomy. I extracted the sequences to fasta because this is the format that is needed to build a phylogeny. 
 
-To begin building a phylogeny, I read in the metadata and the phylogeny, which was created from the fasta exported above in Geneious by aligning the sequences with MAFFT and then building a Maximum-Likelihood tree with RAxML. I then constructed a phyloseq object with all of the appropriate data, such as phylogeny from sequence variants, taxonomy for each sequence variant and metadata for each sample. In general, a phyloseq tool can be used to import, analyze, and graphically display phylogenetic sequencing data. It is helpful in reproducible interactive analysis and graphics of microbiome census data [@mcmurdie2013]. However, for this study, I continued by melting the phyloseq object, which puts all of the data for every sample in one file. 
+### Phyloseq 
 
-# Results
+To begin building a phylogeny, I read in the metadata and the phylogeny, which was created from the fasta exported above in Geneious by aligning the sequences with MAFFT and then building a Maximum-Likelihood tree with RAxML. I then constructed a phyloseq object with all of the appropriate data, such as phylogeny from sequence variants, taxonomy for each sequence variant and metadata for each sample. In general, a phyloseq tool can be used to import, analyze, and graphically display phylogenetic sequencing data. It is helpful in reproducible interactive analysis and graphics of microbiome census data [@mcmurdie2013]. However, for this study, I continued by melting the phyloseq object, which puts all of the data for every sample in one file. Using this data, I analyzed the difference in bacterial communities in terms of their taxonomy between the Fkey sample set and the Jkey sample set. 
 
-## Abundance of Phylum in All Key Samples
-
-I studied the abundance of sequences of each of the different phylum observed in all of the key samples in [Figure 1]. In analyzing the individual phylum that were gathered from the key samples, there were 7 that displayed abundance values, meaning that there are 7 different phylum found on all of the different keys. With Actinobacteria having the largest abundance of sequences at around 470-480,000, Firmicutes has the second largest abundance of sequences at around 225,000. Along with this, according to Figure 1, there were other Phylum that contained abundance values ranging from about 2,000 to 4,500 such as Bacteriodetes, Cyanobacteria/Chloroplast and Proteobacteria.  The two Phylum with very similar yet very small abundance values compared to the others at about 500 sequences were Deinococcus-Themus and Fusobacteria. 
-
-## Abundance of Phylum in Fkey and Jkey Samples
-
-Wanting to look deeper at the similarities and differences of keys used between the leftand the right hand, I further analyzed the abundance of sequences of each of the phylum that were gathered from the Fkey and Jkey samples [Figure 2]. I decided to analyze the Fkey and Jkey samples because when the hands are in the resting position on the keyboard, the left pointer finger is positioned on the F key, while the right pointer finger is positioned on the J key. 
-
-In looking at the comparison of abundances of different phylum in the Fkey and Jkey samples, both samples generally contain similar values for Bacteriodetes, Cyanobacteria/Choloroplast, Proteobacteria and Firmicutues. These values ranged from 25 to 100. Firmicutes in particular, displayed almost exact abundance values for both the Fkey and Jkey samples. Another significant trend that I observed was that Fusobacteria was a phyla that was only observed in the Jkey samples and not the Fkey samples. The most important trend I noticed though, was the large difference in abundance values between the Actinobacteria sequences in Fkey samples compared to the Jkey samples. While the Fkey samples had an abundance of sequences for Actinobacteria of about 750, Jkey samples had an abundance value for Actinobacteria of about only 525. 
-
-## Abundance of Genus in Fkey and Jkey Samples
-
-With the major difference between the abundance values of observed Actinobacteria in the Fkey samples vs. the Jkey samples, I wanted to look further into why this may be. To do so, I generated a figure to represent the abundance of different Genera in the Fkey samples compared to the Jkey samples [Figure 3]. Analyzing this data, Actinomyces, Collinsella, Corynebacterium, Rothia and an NA group were the genera that were similar in abundance values in both sets of samples. The abundance values of these genera ranged from about 10 sequences to 50 sequences. Along with this, there were also genera that were seen stricly in one of the sample sets but not the other. Specifically, Segriliparus, Dermabacter and Brevibacterium are all genera with small abundance values of around what looks to be of about 30 sequences and less seen in Fkey samples only. In contrast to this, Dietzia is the only genus with a small abundance value of what looks to be less than 10 sequences in the Jkey samples. The most significant pieces of data though, were the abundance values of Propionobacterium in the two sets of samples. In further detail, the Fkey samples conveyed a much higher abundance of sequences for Propionobacterium at about 700 sequences. The Jkey samples however, only displayed an abundace of about 325 sequences for the same genus. 
-
-## Abundance of *Propionobacterium* According to host_subject_id in Fkey and Jkey Samples 
-
-Because of the major difference in abundance values of *Propionobacterium* in Fkey samples compared to Jkey samples, I took a closer look at the abundance of *Propionobacterium* according to host_subject_id in these samples [Figure 4]. Specific trends seen among the host subjects would be able to provide us with an idea of which specific subject may have led to such a large difference in the abundance of *Propionobacterium* and Actinobacteria between the two sample sets.
-
-For the Fkey samples, data was gathered from the two subjects of M2 and M9. For the Jkey samples on the other hand, data was collected from the two subjects of M2 and M3. The host subject of M2 provided data for both the Fkey and Jkey samples. In both sample sets, very similar abundance values around 140-160 sequences for *Propionobacterium* of the M2 subject were seen. Providing data for the Jkey samples only, the M3 subject revealed an abundance value of approximately 325 sequences for the specific genus. Lastly, the M9 subject provided data strictly for the Fkey samples. The M9 subject revealed the highest abundance value of about 750 sequences for *Propionobacterium*. 
-
-## Summary Table of the Abundance of Sequences of *Propionobacterium* According to host_subject_id in the Fkey and Jkey Samples
-
-To summarize and go into more detail about the findings that were gathered in Figure 4, I created a summary table [Table 1]. The M2 subject in terms of the Fkey samples had an abundance of 142 sequences corresponding to *Propionobacterium*. The same subject in the Jkey samples had a similar abundance of 158 sequences relating to the same genus. The M3 subject who was studied only in terms of the Jkey samples displayed an abundance of 327 sequences for *Propionobacterium*. Lastly, significantly higher than the other values, the M9 subject, looked at in terms of the Fkey samples revealed an abundance value of 752 sequences for the genus. 
 
 ```{r load-libraries, message = FALSE}
 # Be sure to install these packages before running this script
@@ -108,7 +87,7 @@ library("mctoolsr")
 library("phyloseq")
 ```
 
-```{r extract-sample-and-file-names}
+```{r extract-sample-and-file-names, echo=TRUE}
 # NOTE: Much of the following follows the DADA2 tutorials available here:
 # https://benjjneb.github.io/dada2/tutorial.html
 # Accessed October 19, 2017
@@ -126,14 +105,14 @@ sample_names <- sapply(strsplit(filenames_forward_reads, "\\."), `[`, 1)
 filenames_forward_reads <- file.path(path, filenames_forward_reads)
 ```
 
-```{r check-quality-plots}
+```{r check-quality-plots, echo=TRUE}
 # Plots the quality profiles of all twenty samples
 plotQualityProfile(filenames_forward_reads[1:20])
 ```
 
 We can see from the quality profiles that most reads tend to get pretty bad in quality after around 200 bases. 
 
-```{r filter-reads}
+```{r filter-reads, echo=TRUE}
 # Place filtered files in filtered/ subdirectory
 # note this will fail if the directory doesn't exist
 filter_path <- file.path("output", "filtered")
@@ -156,7 +135,7 @@ filtered_output <- filterAndTrim(fwd = filenames_forward_reads,
                                  multithread = FALSE)
 ```
 
-```{r filtered-read-counts-table}
+```{r filtered-read-counts-table, echo=TRUE}
 # produce nicely-formatted markdown table of read counts
 # before/after trimming
 kable(filtered_output,
@@ -164,20 +143,20 @@ kable(filtered_output,
                     "Reads Out"))
 ```
 
-```{r learn-errors}
+```{r learn-errors, echo=TRUE}
 # this build error models from each of the samples
 errors_forward_reads <- learnErrors(filtered_reads_path,
                                     multithread = TRUE)
 ```
 
-```{r visualize-errors-with-plots}
+```{r visualize-errors-with-plots, echo=TRUE}
 # quick check to see if error models match data
 # (black lines match black points) and are generally decresing left to right
 plotErrors(errors_forward_reads,
            nominalQ = TRUE)
 ```
 
-```{r dereplicate-sequences}
+```{r dereplicate-sequences, echo=TRUE}
 # get rid of any duplicated sequences
 dereplicated_forward_reads <- derepFastq(filtered_reads_path,
                                          verbose = TRUE)
@@ -186,7 +165,7 @@ dereplicated_forward_reads <- derepFastq(filtered_reads_path,
 names(dereplicated_forward_reads) <- sample_names
 ```
 
-```{r run-dada}
+```{r run-dada, echo=TRUE}
 # parameters adjusted based on recommendations for 454 data here:
 # https://benjjneb.github.io/dada2/
 #     faq.html#can-i-use-dada2-with-my-454-or-ion-torrent-data
@@ -199,21 +178,21 @@ dada_forward_reads <- dada(dereplicated_forward_reads,
 dada_forward_reads
 ```
 
-```{r make-sequence-table}
+```{r make-sequence-table, echo=TRUE}
 # produce the 'site by species matrix'
 sequence_table <- makeSequenceTable(dada_forward_reads)
 ```
 
 The output table has `r nrow(sequence_table)` rows (samples) and `r ncol(sequence_table)` columns (sequence variants). Notice how we can embed R code directly in our markdown text.
 
-```{r histogram-of-sequence-lengths}
+```{r histogram-of-sequence-lengths, echo=TRUE}
 # Quick check to look at distribution of trimmed and denoised sequences
 hist(nchar(getSequences(sequence_table)),
      main = "Histogram of final sequence variant lengths",
      xlab = "Sequence length in bp")
 ```
 
-```{r remove-chimeras}
+```{r remove-chimeras, echo=TRUE}
 # Check for and remove chimeras
 sequence_table_nochim <- removeBimeraDenovo(sequence_table,
                                             method = "consensus",
@@ -227,7 +206,7 @@ non_chimeric_reads <- round(sum(sequence_table_nochim) / sum(sequence_table),
 
 After removing chimeras, we were left with `r non_chimeric_reads`% of our cleaned reads.
 
-```{r table-of-pipeline-read-counts}
+```{r table-of-pipeline-read-counts, echo=TRUE}
 # Build a table showing how many sequences remain at each step of the pipeline
 get_n <- function(x) sum(getUniques(x)) # make a quick function
 track <- cbind(filtered_output, # already has 2 columns
@@ -249,7 +228,7 @@ rownames(track) <- sample_names
 kable(track)
 ```
 
-```{r assign-taxonomy}
+```{r assign-taxonomy, echo=TRUE}
 # assigns taxonomy to each sequence variant based on a supplied training set
 # made up of known sequences
 taxa <- assignTaxonomy(sequence_table_nochim,
@@ -261,7 +240,7 @@ taxa <- assignTaxonomy(sequence_table_nochim,
 unname(taxa)
 ```
 
-```{r extract-sequences-to-fasta}
+```{r extract-sequences-to-fasta, echo=TRUE}
 # we want to export the cleaned, trimmed, filtered, denoised sequence variants
 # so that we can build a phylogeny - we'll build the phylogeny outside of R
 # but we need the fasta file to do so. We keep the names of each sequence as the
@@ -288,7 +267,7 @@ export_taxa_table_and_seqs(sequence_table_nochim,
 ```
 
 
-```{r read-in-metadata-and-create-phyloseq}
+```{r read-in-metadata-and-create-phyloseq, echo=TRUE}
 # Next we want to read in the metadata file so we can add that in too
 # This is not a csv file, so we have to use a slightly different syntax
 # here the `sep = "\t"` tells the function that the data are tab-delimited
@@ -322,6 +301,34 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
 melted_obj <- psmelt(phyloseq_obj)
 ```
 
+# Results
+
+I looked at two individuals in the Fkey sample set and two individuals in the Jkey sample set in correspondence to three keyboards. The data collected from these samples were ran through a high-throughput pyrosequencing method. After trimming, denoising, dereplicating, removing chimeras, etc. from the data set, we were left with the appropriate sequences which I analyzed. 
+
+## Abundance of Phylum in All Key Samples
+
+I first analyzed the abundance of sequences of each of the different phylum observed in all of the key samples [Figure 1]. In analyzing the individual phylum that were gathered from the key samples, there were 7 that displayed abundance values, meaning that there are 7 different phylum found on all of the different keys. With Actinobacteria having the largest abundance of sequences at around 470-480,000, Firmicutes has the second largest abundance of sequences at around 225,000. Along with this, according to Figure 1, there were other Phylum that contained abundance values ranging from about 2,000 to 4,500 such as Bacteriodetes, Cyanobacteria/Chloroplast and Proteobacteria.  The two Phylum with very similar yet very small abundance values compared to the others at about 500 sequences were Deinococcus-Themus and Fusobacteria. 
+
+## Abundance of Phylum in Fkey and Jkey Samples
+
+Wanting to look deeper at the similarities and differences of keys used between the leftand the right hand, I further analyzed the abundance of sequences of each of the phylum that were gathered from the Fkey and Jkey samples [Figure 2]. I decided to analyze the Fkey and Jkey samples because when the hands are in the resting position on the keyboard, the left pointer finger is positioned on the F key, while the right pointer finger is positioned on the J key. 
+
+In looking at the comparison of abundances of different phylum in the Fkey and Jkey samples, both samples generally contain similar values for Bacteriodetes, Cyanobacteria/Choloroplast, Proteobacteria and Firmicutues. These values ranged from 25 to 100. Firmicutes in particular, displayed almost exact abundance values for both the Fkey and Jkey samples. Another significant trend that I observed was that Fusobacteria was a phyla that was only observed in the Jkey samples and not the Fkey samples. The most important trend I noticed though, was the large difference in abundance values between the Actinobacteria sequences in Fkey samples compared to the Jkey samples. While the Fkey samples had an abundance of sequences for Actinobacteria of about 750, Jkey samples had an abundance value for Actinobacteria of about only 525. 
+
+## Abundance of Genus in Fkey and Jkey Samples
+
+With the major difference between the abundance values of observed Actinobacteria in the Fkey samples vs. the Jkey samples, I wanted to look further into why this may be. To do so, I generated a figure to represent the abundance of different Genera in the Fkey samples compared to the Jkey samples [Figure 3]. Analyzing this data, Actinomyces, Collinsella, Corynebacterium, Rothia and an NA group were the genera that were similar in abundance values in both sets of samples. The abundance values of these genera ranged from about 10 sequences to 50 sequences. Along with this, there were also genera that were seen stricly in one of the sample sets but not the other. Specifically, Segriliparus, Dermabacter and Brevibacterium are all genera with small abundance values of around what looks to be of about 30 sequences and less seen in Fkey samples only. In contrast to this, Dietzia is the only genus with a small abundance value of what looks to be less than 10 sequences in the Jkey samples. The most significant pieces of data though, were the abundance values of Propionobacterium in the two sets of samples. In further detail, the Fkey samples conveyed a much higher abundance of sequences for Propionobacterium at about 700 sequences. The Jkey samples however, only displayed an abundace of about 325 sequences for the same genus. 
+
+## Abundance of *Propionobacterium* According to host_subject_id in Fkey and Jkey Samples 
+
+Because of the major difference in abundance values of *Propionobacterium* in Fkey samples compared to Jkey samples, I took a closer look at the abundance of *Propionobacterium* according to host_subject_id in these samples [Figure 4]. Specific trends seen among the host subjects would be able to provide us with an idea of which specific subject may have led to such a large difference in the abundance of *Propionobacterium* and Actinobacteria between the two sample sets.
+
+For the Fkey samples, data was gathered from the two subjects of M2 and M9. For the Jkey samples on the other hand, data was collected from the two subjects of M2 and M3. The host subject of M2 provided data for both the Fkey and Jkey samples. In both sample sets, very similar abundance values around 140-160 sequences for *Propionobacterium* of the M2 subject were seen. Providing data for the Jkey samples only, the M3 subject revealed an abundance value of approximately 325 sequences for the specific genus. Lastly, the M9 subject provided data strictly for the Fkey samples. The M9 subject revealed the highest abundance value of about 750 sequences for *Propionobacterium*. 
+
+## Summary Table of the Abundance of Sequences of *Propionobacterium* According to host_subject_id in the Fkey and Jkey Samples
+
+To summarize and go into more detail about the findings that were gathered in Figure 4, I created a summary table [Table 1]. The M2 subject in terms of the Fkey samples had an abundance of 142 sequences corresponding to *Propionobacterium*. The same subject in the Jkey samples had a similar abundance of 158 sequences relating to the same genus. The M3 subject who was studied only in terms of the Jkey samples displayed an abundance of 327 sequences for *Propionobacterium*. Lastly, significantly higher than the other values, the M9 subject, looked at in terms of the Fkey samples revealed an abundance value of 752 sequences for the genus. 
+
 ```{r bar-graph-1}
 # This graph represents the abundance of
 # each Phylum that is observed in all of the
@@ -338,7 +345,7 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in All Key Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 1**: The Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in All of the Key Samples 
+**Figure 1**: Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in All of the Key Samples. Abundance value of Actinobacteria reads to be the highest. Firmicutes reads to be the second highest with an abundance value at about half of what is seen with Actinobacteria. Other phylumm observed include Bacteriodetes, Cyanobacteria/Chloroplas, Deinococcus-Themus, Fusobacteria, and Proteobacteria at relatively lower abundance values. 
 
 ```{r bar-graph-2}
 # This bar graph goes into detail about
@@ -357,7 +364,7 @@ melted_obj %>%
   ggtitle("Abundance of Phylum in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 2**: The Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples 
+**Figure 2**: Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples. The significant difference between the abundances of sequences relating to Actinobacteria in the Fkey samples vs. the Jkey samples stands out. Abundance values in both sample sets for Bacteriodetes, Cyanobacteria/Chloroplast, Firmicutes and Proteobacteria are relatively similar at much lower values compared to Actinobacteria. Only Jkey samples revealed Fusobacteria. 
 
 ```{r bar-graph-3}
 # This graph takes Actinobacteria, the
@@ -377,7 +384,7 @@ melted_obj %>%
   ggtitle("Abundance of Genus in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 3**: The Abundance of the Sequences Corresponding to Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples 
+**Figure 3**: Abundance of the Sequences Corresponding to Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples. The major difference between the abundances of sequences relating to Propionibacterium in the Fkey samples and the Jkey samples is the important takeaway. Other genera such as Actinomyces, Collinsella, Corynbacterium, Rotina, and NA have similar yet significantly lower values in both sample sets compared to the value seen with Propionibacterium. Brevibacterium, Dermabacter, and Segniliparus revealed abundance values for Fkey samples only, while Dietzia conveyed an abundance value for Jkey samples only. 
 
 ```{r bar-graph-4}
 # Seeing that there is an obvious difference in
@@ -398,11 +405,11 @@ melted_obj %>%
              y = Abundance,
              fill = sample_source)) +
   geom_col(position = position_dodge()) +
-  ggtitle("Abundance of Proponiobacterium
+  ggtitle("Abundance of Propioniobacterium
 According to host_subject_id in Fkey and Jkey Samples") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-**Figure 4**: The Abundance of Sequences Corresponding to *Proponiobacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
+**Figure 4**: Abundance of Sequences Corresponding to *Proponiobacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples. The M9 individual holds the highest abundance value in correspondence to the Fkey samples and Propionibacterium. The M3 individual reveals the second highest abundance of sequences relating to Propionibacterium and Jkey samples. The M2 individual, studied in terms of both samples, conveyed similar abundance values of Proponiobacterium. 
 
 ```{r table-1}
 # This table gives a summary of the results
@@ -433,8 +440,5 @@ In comparing the phylum and genus of the right pointer finger vs. the left point
 
 # Sources Cited
 
-Callahan et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. Nature methods. 
-
-McMurdie & Holmes (2013). phyloseq: An R package for reproducible interactive analysis and graphics of microbiome census data. PLoS ONE. 
 
 
