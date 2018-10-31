@@ -1,5 +1,5 @@
 ---
-title: "Analysis Report 1: The Difference Between Bacterial Communities on Right Pointer Fingers Compared to Left Pointer Fingers"
+title: "Analysis Report 1: A Difference Between Bacterial Communities on Right Pointer Fingers Compared to Left Pointer Fingers in Looking at Taxonomy Through the Analysis of Data Obtained from a High-throughput Sequencing Method"
 author: "Kailie Dela Cruz"
 date: "October 20, 2017"
 output: github_document
@@ -13,6 +13,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
+There are about one trillion species of bacteria surrounding us, where only .001% of them are known (CITE). Whether we are at the mall shopping, eating food at a popular restaurant, or even in our own homes, we are constantly interacting with these species. Though they aren't able to be seen without the help of a microscope, the understanding of them is still crucial to our world as they impact us in different ways. While there are helpful phylum of bacteria such as Proteobacteria and Actinobacteria [@quigley2013gut], which are found in our gut to aid in digestion, there is an overwhelming amount of detrimental bacteria that can cause sickness as well. 
+
+Constantly touching everything around us, we are always putting ourselves at risk to contracting illnesses. If we do not take into account this inevitable interaction between our immune system and bacteria, we can put ourselves at risk for other things as well, such as possible unemployment, termination, etc. because of high sickness absences [@stansfeld1995sickness]. For populated areas in particular, these interactions are highly increased. According to Stansfeld et al., the estimated number of bacteria across the whole body of the "reference man" who is 70 kg, is 3.8x10^13 [@stansfeld1995sickness]. With a larger number of people in populated areas, this leads to a larger number of interactions between bacteria and people as well. One very common location that holds a large number of people every day is a college campus. With taking notes in class, eating in the school's cafeteria, and typing out essays, college campuses are filled with the spread of bacteria. Understanding the interactions between bacteria and humans in populated areas such as college campuses, can lead to a general idea of how to handle the consequences that may come with it. 
 
 
 # Methods
@@ -426,7 +429,7 @@ melted_obj %>%
   group_by(host_subject_id, sample_source) %>%
   summarize(sum_seqs = sum(Abundance))
 ```
-**Table 1**: A Summary of the Abundace of Sequences of *Propionibacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples 
+**Table 1**: Summary of the Abundace of Sequences of *Propionibacterium* According to host_subject_id in the Fkey Samples Compared to the Jkey Samples. Individual M9 studied in Fkey samples held the high sequence number at 752. Individual M3 studied in only Jkey samples held the second highest sequence number at 327. Individual M2, who was looked at in both sample sets revealed similar sequence numbers at 142 for the Fkey samples and 158 for the Jkey samples. 
 
 # Discussion
 
