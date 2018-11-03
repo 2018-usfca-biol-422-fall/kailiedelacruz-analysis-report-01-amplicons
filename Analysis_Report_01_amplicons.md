@@ -1,4 +1,4 @@
-Analysis Report 1: Your Title Here
+Analysis Report 1: Variation in Abundance of Propionobacterium Among Individuals Studied In Terms of Fkey Samples vs. Individuals Studied In Terms of Jkey Samples but Not in Indiviauls That Are Studied In terms of Both Fkey and Jkey Sample Sets
 ================
 Kailie Dela Cruz
 October 20, 2017
@@ -6,7 +6,13 @@ October 20, 2017
 Introduction
 ============
 
-Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
+It is estimated that there may be more than a thousand million species of bacteria surrounding us, where only .001% of them are known (May, 1988). Whether we are at the mall shopping, eating food at a popular restaurant, or even in our own homes, we are constantly interacting with these species. Though they aren't able to be seen without the help of a microscope, the understanding of them is still crucial to our world as they impact us in different ways. While there are helpful phylum of bacteria such as Proteobacteria and Actinobacteria (Quigley, 2013), which are found in our gut to aid in digestion, there is an overwhelming amount of detrimental bacteria that can cause sickness as well.
+
+Constantly touching everything around us, we are always putting ourselves at risk to contracting illnesses. If we do not take into account this inevitable interaction between our immune system and bacteria, we can put ourselves at risk for other things as well, such as possible unemployment, termination, etc. because of high sickness absences (Stansfeld *et al.*, 1995). A reason as to why such interactions are so inevitable is because of the fact that skin bacteria may persist in one area because of the environment conditions that surround it. Specifically, with a lot of moisture, varying temperatures, etc. bacteria is able to be roam around for a long period of time. For populated areas in particular, these interactions are highly increased. According to Stansfeld et al., the estimated number of bacteria across the whole body of the "reference man" who is 70 kg, is 3.8x10^13 (Stansfeld *et al.*, 1995). Larger numbers of people in populated areas leads to larger numbers of interactions between bacteria and people as well. Along with this, a well populated area holds very diverse species of bacteria. Diverse bacterial species can be seen in males vs. females, children vs. adults, people living in one country vs. another, etc. Though diverse, these bacteria found all around us are stable. Even if we wash our hands, they regenerate after a couple of hours. With this being said, bacterial species, which are diverse and stable, can be further studied in terms of identity through the use of high-throughput sequencing methods (Grice and Segre, 2011).
+
+In the study "Forensic identification using skin bacterial communities," Fierer et al. looked more closely at the populated area of a college campus to demonstrate that they could use skin bacteria to connect touched surfaces to the person who had touched it. Following the criteria of recovered bacterial DNA from touched surfaces allowing for comparison of bacterial groups, bacterial communities found on the skin living on the surfaces for days to weeks, and touched surfaces being able to be linked to people by looking at the level of similarities between the bacterial groups on the surface and the person who touched it. To complete their study while following these criteria, high-throughput pyrosequencing methods were used to analyze phylogenetic communities. Fierer et al. compared skin bacterial groups on individual keys of three keyboards to the bacterial groups found on the fingertips of the keyboard owners.
+
+In analyzing the data from Fierer et al.'s study, I had two main questions. The first question was if there would be a noticeable difference in bacterial communities between left pointer fingers that use the left side of the keyboard vs. right pointer fingers that use the right side of the keyboard. The second question focuses on the general variation of abundance of focal genera between the individuals and their correlating key samples. In the Fierer et al. study, an average of about 1400 bacterial 16S rRNA sequences were gathered from each sample (Fierer *et al.*, 2010). Running this data through the DADA2 pipeline, there were 1539 input sequences that I then analyzed. Taking a look at the the bacterial communities in the Fkey samples vs. the Jkey samples would provide me with basic information about how bacterial communities differ generally between the two. Looking at both of these sample sets, for the first question, I hypothesized that the bacterial communities would be the same or generally similar in terms of their taxonomy. For the second question, however, I hypothesized that with individuals studied in both samples would have similar abundances of focal genera, while separate individual subjects would have larger variations in abundances of focal genera between each other. Seeing a major difference between the bacterial phylum of the two key samples could ultimately provide information that relates to everyone. In further detail, getting a better idea about the difference in bacterial communities on the left pointer fingers in correspondence to the Fkey samples vs. the right pointer fingers in correspondence to the Jkey samples could provide a general idea about how bacteria differs on our left hands vs. the right. Relating this to the real world, this bacterial difference on our own hands can be significant through the fact that the use of our right hands differ from the use of our left hands and this can lead to different impacts on our health.
 
 Methods
 =======
@@ -14,53 +20,36 @@ Methods
 Sample origin and sequencing
 ----------------------------
 
-Add about half a page here. In this section instead of first person (I/we), use Fierer et al., since you'll just be describing what they did, based on the methods in their paper.
+### Sample Collection
+
+For the keyboard samples, Fierer et al. swabbed about 25-30 individual keys of three personal computer keyboards (Fierer *et al.*, 2010). They then swabbed the skin of the ventral surface of the distal joint of each fingertip of the owners that corresponded with the computer keyboards. 20-35 years of age, the owners of the keyboards were healthy during the time of sampling. Before swabbing, the keyboards had not been touched for more than 30 minutes. During sampling, the three keyboards and the corresponding fingertips were swabbed within 10 minutes of each other. To understand the similarities and differences between these three keyboards in relation to other keyboards, Fierer et al. gathered samples of spacebar keys were taken from 15 other keyboards found around the University of Colorado campus. They used autoclaved and pre-moistened cotton-tipped swabs to sample the skin surfaces and keyboard keys. For about 10 seconds, they swabbed each key with light amounts of pressure. They then stored the swabs at -80 C for less than 1 week before DNA extraction.
+
+### DNA Extraction and Pyrosequencing
+
+Fierer et al. extracted the genomic DNA from the swabs using the MO BIO PowerSoil Isolation kit. The cotton portions of the swabs that were frozen were added into bead tubes with Solution C1. The bead tubes were incubated for 10 minutes at 65 C and then shaken for 2 minutes. Shaken by the MO BIO vortex adapter, it was done horizontally at a maximum speed.
+
+Fierer et al. amplified the 16SrRNA genes using the primer that is effective in phylogenetic analysis of pyrosequencing reads. They continued with polymerase chain reactions. They ran thermal cycling with initial denaturation at 94 C for 3 minutes. They followed this with 35 cycles of denaturation at 94 C for 45 seconds. Annealing conditions were at 50 C for 30 seconds, extension conditions were at 72 C for 90 seconds and final extension conditions were at 72 C for 10 minutes.
+
+Fierer et al. carried out pyrosequencing on a 454 Life Sciences Genome Sequencer FLX instrument by the Environmental Genomics Core Facility at the University of South Carolina.
+
+### Sequence Analysis and Community Comparisons
+
+Fierer et al. removed sequences from the analysis if they were more than 300 base pairs in length, less than 200 base pairs, had a quality score of less than 25, contained unknown variables, contained an uncorrectable barcode or did not contain the primer sequence. They assigned the remaining sequences to samples by examining the 12-nt-bar code. Sequences that were similar to each other were grouped into operational taxonomic units using cd-hit. They chose representative sequences from each operational taxonomic unit by selecting the longest sequence that had the largest number of hits to other sequences in the operational taxonomic unit. They created a phylogenetic tree using Clearcut with Kimura’s two-parameter model.
+
+Fierer et al. obtained a minimum of 800 quality sequences with sequences averaging 240 base pairs in length.
+
+To determine the amount of distance between the pairs of bacterial communities, Fierer et al. used the UniFrac metric. These distances are based on the fraction of the branch length shared between two communities within a phylogenetic tree constructed from the 16S rRNA gene sequences from all communities being compared. A small UniFrac distance means that two communities are structurally similar, where lineages share a common evolutionary history. They used the analysis of similarities function in the PRIMER program to test for differences in community structure among the groups of samples.
 
 Computational
 -------------
 
-These are the methods you used. Should probably be at least a half of a page. At a very minimum should include citations for DADA2 (Callahan *et al.*, 2016) and phyloseq (McMurdie and Holmes, 2013). Note that these don't count towards the five references you need to cite in the introduction.
+### DADA2
 
-Results
-=======
+Given the data set from the Fierer et al. study, I extracted the sample and file names following the DADA2 tutorial (Callahan *et al.*, 2016). Specifically, the first step to this was to set the base path for our input data files. This means that we provide a path variable so that it points to the input data files on my machine. After defining a path variable, I sorted the samples to ensure that they were in order. With a sorted sample set, I then extracted the sample names, making the assumption that the files have the format of “SAMPLENAME.fastq.” Following this, I specified the full path needed to take to reach each of the filenames\_forward\_reads. After extracting the samples, sorting them, ensuring the format of the files and defining a path for them, I inspected the read quality profiles by plotting the quality profiles of all twenty samples. After filtering the files, I placed them into a created subdirectory named “filtered”. I then trimmed the data from the filtered files discarding any sequences with Ns, allowing up to 3 expected errors, and cutting off the reads if quality gets as low as 2. To compare the read counts before and after trimming, I created a markdown table. The table showed that the number of read ins were very similar to the number of read outs in the fastq files. Next, continuing with the DADA2 pipeline, I learned the error rates of the data. Every set of data that deals with amplicons has a different set of error rates. This algorithm learns the error model of the dataset by interchanging the estimation of the error rates with the sample structure until they come together as one result. Using this algorithm, you generally need to begin with a prediction, which the maximum possible error rates in the data are used. The error will generally only rate if all of the sequences are errors except for the most abundant sequence. To visualize the errors, I generated plots. This provided the opportunity to check to see if error models match the data. After visualizing the learned error rates, I dereplicated the sequences or got rid of any duplicated sequences. In further detail, dereplication combines the duplicate sequences into one individual and unique sequence with the relevant abundance that is equal to the number of reads with that sequence. This DADA2 algorithm provides a summary of the quality information that is corresponding to each unique sequence. The overall quality profile of the unique sequences is based on the average of the positional qualities from the dereplicated reads. For this study, I named the dereplicated sequences by the appropriate sample names. At this point, I ran dada to obtain multiple diagnostics about the quality of each denoised sequence variant, the number of reads in the number of unique sequences in each of the samples, etc. To visualize the information obtained from running dada, I generated a sequence table and histogram. The tables rows read “samples” and its columns read “sequence variants.” The histogram which displayed the distribution of trimmed and denoised sequences, studied the sequence length in bp in relation to the frequency. Next, I checked for and removed any chimeras found in the data. Chimeras can be checked for by identifying them through the possibility of left and right segments to be constructed exactly from two more abundant “parent” sequences. Using the information gathered so far, I built a table showing how many sequences remain at each step of the pipeline. The columns of the table read “Input,” “Filtered,” “Denoised,” “Sequence Table,” and “Non-chimeric.” Following this, I assigned taxonomy to each sequence variant based on a supplied training set made up of unknown sequences. I exported the cleaned, trimmed, filtered, and denoised sequence variants in order to build a phylogeny to allow for the visualization of the taxonomy. I extracted the sequences to fasta because this is the format that is needed to build a phylogeny.
 
-In addition to a minimum of 3-4 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the results section you just describe what you found, but you don't interpret it - that happens in the discussion.
+### Phyloseq
 
-``` r
-# Be sure to install these packages before running this script
-# They can be installed either with the intall.packages() function
-# or with the 'Packages' pane in RStudio
-
-# load general-use packages
-library("dplyr")
-library("tidyr")
-library("knitr")
-library("ggplot2")
-
-# this package allows for the easy inclusion of literature citations in our Rmd
-# more info here: https://github.com/crsh/citr
-# and here:
-# http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
-library("citr")
-
-# These are the primary packages well use to clean and analyze the data
-# this package needs to be installed from bioconductor -- it's not on CRAN
-# see info here: https://benjjneb.github.io/dada2/dada-installation.html
-library("dada2")
-
-# This to export a fasta of our final denoised sequence variants
-library("seqinr")
-
-# To install this you have to install from GitHub
-# See more info here: https://github.com/leffj/mctoolsr
-# run this -- install.packages("devtools")
-# and then this -- devtools::install_github("leffj/mctoolsr")
-library("mctoolsr")
-
-# And this to visualize our results
-# it also needs to be installed from bioconductor
-library("phyloseq")
-```
+To begin building a phylogeny, I read in the metadata and the phylogeny, which was created from the fasta exported above in Geneious by aligning the sequences with MAFFT and then building a Maximum-Likelihood tree with RAxML. I then constructed a phyloseq object with all of the appropriate data, such as phylogeny from sequence variants, taxonomy for each sequence variant and metadata for each sample. In general, a phyloseq tool can be used to import, analyze, and graphically display phylogenetic sequencing data. It is helpful in reproducible interactive analysis and graphics of microbiome census data (McMurdie and Holmes, 2013). However, for this study, I continued by melting the phyloseq object, which puts all of the data for every sample in one file. Using this data, I analyzed the difference in bacterial communities in terms of their taxonomy between the Fkey sample set and the Jkey sample set. I also analyzed the variation in abundances of the focal genera between each individual that was sampled. In doing so, I specifically needed the data that related to the taxonomy of all of the key samples as well as the abundances of sequences of the important taxonomy that relate to the samples.
 
 ``` r
 # NOTE: Much of the following follows the DADA2 tutorials available here:
@@ -112,7 +101,7 @@ filtered_output <- filterAndTrim(fwd = filenames_forward_reads,
                                  truncQ = 2, # cut off if quality gets this low
                                  rm.phix = TRUE,
                                  compress = TRUE,
-                                 multithread = TRUE)
+                                 multithread = FALSE)
 ```
 
 ``` r
@@ -2763,7 +2752,7 @@ unname(taxa)
     ##  [781,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
     ##  [782,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ##  [783,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
-    ##  [784,] "Bacteria" NA                            NA                     
+    ##  [784,] "Bacteria" "Proteobacteria"              NA                     
     ##  [785,] "Bacteria" "Proteobacteria"              "Alphaproteobacteria"  
     ##  [786,] "Bacteria" "Firmicutes"                  "Bacilli"              
     ##  [787,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
@@ -2778,7 +2767,7 @@ unname(taxa)
     ##  [796,] "Bacteria" "Proteobacteria"              "Betaproteobacteria"   
     ##  [797,] "Bacteria" "Bacteroidetes"               "Sphingobacteriia"     
     ##  [798,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
-    ##  [799,] "Bacteria" NA                            NA                     
+    ##  [799,] "Bacteria" "Candidatus_Saccharibacteria" NA                     
     ##  [800,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ##  [801,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ##  [802,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
@@ -3180,7 +3169,7 @@ unname(taxa)
     ## [1198,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1199,] "Bacteria" "Fusobacteria"                "Fusobacteriia"        
     ## [1200,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
-    ## [1201,] "Bacteria" "Bacteroidetes"               NA                     
+    ## [1201,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
     ## [1202,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
     ## [1203,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1204,] "Bacteria" "Firmicutes"                  "Negativicutes"        
@@ -3211,7 +3200,7 @@ unname(taxa)
     ## [1229,] "Bacteria" "Firmicutes"                  "Clostridia"           
     ## [1230,] "Bacteria" "Firmicutes"                  "Bacilli"              
     ## [1231,] "Bacteria" "Firmicutes"                  "Clostridia"           
-    ## [1232,] "Bacteria" "Bacteroidetes"               NA                     
+    ## [1232,] "Bacteria" "Bacteroidetes"               "Bacteroidia"          
     ## [1233,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1234,] "Bacteria" "Firmicutes"                  "Bacilli"              
     ## [1235,] "Bacteria" "Bacteroidetes"               "Flavobacteriia"       
@@ -3298,7 +3287,7 @@ unname(taxa)
     ## [1316,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1317,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ## [1318,] "Bacteria" "Fusobacteria"                "Fusobacteriia"        
-    ## [1319,] "Bacteria" "Proteobacteria"              NA                     
+    ## [1319,] "Bacteria" "Proteobacteria"              "Deltaproteobacteria"  
     ## [1320,] "Bacteria" "Proteobacteria"              "Gammaproteobacteria"  
     ## [1321,] "Bacteria" "Actinobacteria"              "Actinobacteria"       
     ## [1322,] "Bacteria" "Bacteroidetes"               "Cytophagia"           
@@ -4457,7 +4446,7 @@ unname(taxa)
     ##  [941,] "Flavobacteriales"    "Flavobacteriaceae"                
     ##  [942,] NA                    NA                                 
     ##  [943,] "Bacillales"          "Bacillales_Incertae_Sedis_XI"     
-    ##  [944,] "Bacillales"          "Alicyclobacillaceae"              
+    ##  [944,] "Bacillales"          NA                                 
     ##  [945,] "Lactobacillales"     "Carnobacteriaceae"                
     ##  [946,] "Actinomycetales"     "Dietziaceae"                      
     ##  [947,] "Flavobacteriales"    "Flavobacteriaceae"                
@@ -4491,7 +4480,7 @@ unname(taxa)
     ##  [975,] "Actinomycetales"     "Micrococcaceae"                   
     ##  [976,] "Bacillales"          "Bacillales_Incertae_Sedis_XI"     
     ##  [977,] "Pseudomonadales"     "Moraxellaceae"                    
-    ##  [978,] "Caulobacterales"     "Caulobacteraceae"                 
+    ##  [978,] NA                    NA                                 
     ##  [979,] "Caulobacterales"     "Caulobacteraceae"                 
     ##  [980,] "Clostridiales"       "Ruminococcaceae"                  
     ##  [981,] "Fusobacteriales"     "Fusobacteriaceae"                 
@@ -4572,7 +4561,7 @@ unname(taxa)
     ## [1056,] "Actinomycetales"     "Propionibacteriaceae"             
     ## [1057,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1058,] "Fusobacteriales"     "Leptotrichiaceae"                 
-    ## [1059,] "Clostridiales"       NA                                 
+    ## [1059,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1060,] "Bacteroidales"       "Bacteroidaceae"                   
     ## [1061,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1062,] "Actinomycetales"     "Corynebacteriaceae"               
@@ -4645,7 +4634,7 @@ unname(taxa)
     ## [1129,] "Sphingomonadales"    "Sphingomonadaceae"                
     ## [1130,] "Rhodobacterales"     "Rhodobacteraceae"                 
     ## [1131,] "Actinomycetales"     "Nocardioidaceae"                  
-    ## [1132,] "Actinomycetales"     NA                                 
+    ## [1132,] "Actinomycetales"     "Nocardioidaceae"                  
     ## [1133,] NA                    NA                                 
     ## [1134,] "Fusobacteriales"     "Leptotrichiaceae"                 
     ## [1135,] "Clostridiales"       "Peptoniphilaceae"                 
@@ -4655,7 +4644,7 @@ unname(taxa)
     ## [1139,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1140,] "Actinomycetales"     "Intrasporangiaceae"               
     ## [1141,] "Clostridiales"       NA                                 
-    ## [1142,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XIII"
+    ## [1142,] "Clostridiales"       NA                                 
     ## [1143,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1144,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1145,] "Clostridiales"       NA                                 
@@ -4714,7 +4703,7 @@ unname(taxa)
     ## [1198,] "Clostridiales"       "Lachnospiraceae"                  
     ## [1199,] "Fusobacteriales"     "Leptotrichiaceae"                 
     ## [1200,] "Flavobacteriales"    "Flavobacteriaceae"                
-    ## [1201,] NA                    NA                                 
+    ## [1201,] "Bacteroidales"       "Rikenellaceae"                    
     ## [1202,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1203,] "Clostridiales"       "Ruminococcaceae"                  
     ## [1204,] "Selenomonadales"     "Veillonellaceae"                  
@@ -4735,7 +4724,7 @@ unname(taxa)
     ## [1219,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1220,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1221,] "Flavobacteriales"    "Flavobacteriaceae"                
-    ## [1222,] "Bacteroidales"       NA                                 
+    ## [1222,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1223,] "Vibrionales"         "Vibrionaceae"                     
     ## [1224,] "Bacillales"          "Listeriaceae"                     
     ## [1225,] "Flavobacteriales"    "Flavobacteriaceae"                
@@ -4745,7 +4734,7 @@ unname(taxa)
     ## [1229,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XI"  
     ## [1230,] "Lactobacillales"     "Aerococcaceae"                    
     ## [1231,] "Clostridiales"       "Peptostreptococcaceae"            
-    ## [1232,] NA                    NA                                 
+    ## [1232,] "Bacteroidales"       NA                                 
     ## [1233,] "Enterobacteriales"   "Enterobacteriaceae"               
     ## [1234,] "Lactobacillales"     "Carnobacteriaceae"                
     ## [1235,] "Flavobacteriales"    "Flavobacteriaceae"                
@@ -4798,7 +4787,7 @@ unname(taxa)
     ## [1282,] "Actinomycetales"     "Microbacteriaceae"                
     ## [1283,] "Actinomycetales"     "Actinomycetaceae"                 
     ## [1284,] "Sphingomonadales"    "Sphingomonadaceae"                
-    ## [1285,] "Bacillales"          NA                                 
+    ## [1285,] "Bacillales"          "Alicyclobacillaceae"              
     ## [1286,] "Actinomycetales"     "Corynebacteriaceae"               
     ## [1287,] "Bacteroidales"       "Porphyromonadaceae"               
     ## [1288,] "Sphingobacteriales"  "Sphingobacteriaceae"              
@@ -4903,7 +4892,7 @@ unname(taxa)
     ## [1387,] "Acidimicrobiales"    "Iamiaceae"                        
     ## [1388,] "Bacteroidales"       "Prevotellaceae"                   
     ## [1389,] "Rhizobiales"         "Brucellaceae"                     
-    ## [1390,] "Clostridiales"       NA                                 
+    ## [1390,] "Clostridiales"       "Clostridiales_Incertae_Sedis_XIII"
     ## [1391,] "Fusobacteriales"     "Leptotrichiaceae"                 
     ## [1392,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1393,] "Bacteroidales"       "Porphyromonadaceae"               
@@ -4926,7 +4915,7 @@ unname(taxa)
     ## [1410,] "Fusobacteriales"     "Leptotrichiaceae"                 
     ## [1411,] "Rhizobiales"         "Methylobacteriaceae"              
     ## [1412,] "Lactobacillales"     "Lactobacillaceae"                 
-    ## [1413,] "Actinomycetales"     NA                                 
+    ## [1413,] "Actinomycetales"     "Nakamurellaceae"                  
     ## [1414,] "Bacteroidales"       "Prevotellaceae"                   
     ## [1415,] "Cytophagales"        "Cytophagaceae"                    
     ## [1416,] "Clostridiales"       "Peptoniphilaceae"                 
@@ -4935,7 +4924,7 @@ unname(taxa)
     ## [1419,] "Bacteroidales"       "Prevotellaceae"                   
     ## [1420,] "Sphingomonadales"    "Sphingomonadaceae"                
     ## [1421,] "Bacillales"          "Bacillales_Incertae_Sedis_XII"    
-    ## [1422,] "Bacillales"          NA                                 
+    ## [1422,] "Bacillales"          "Alicyclobacillaceae"              
     ## [1423,] "Cytophagales"        "Cytophagaceae"                    
     ## [1424,] "Bacillales"          "Bacillaceae_1"                    
     ## [1425,] "Clostridiales"       "Ruminococcaceae"                  
@@ -5046,7 +5035,7 @@ unname(taxa)
     ## [1530,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1531,] "Flavobacteriales"    "Flavobacteriaceae"                
     ## [1532,] "Rhodospirillales"    "Rhodospirillaceae"                
-    ## [1533,] "Actinomycetales"     "Corynebacteriaceae"               
+    ## [1533,] "Actinomycetales"     NA                                 
     ##         [,6]                             
     ##    [1,] "Propionibacterium"              
     ##    [2,] "Corynebacterium"                
@@ -5136,7 +5125,7 @@ unname(taxa)
     ##   [86,] "Rothia"                         
     ##   [87,] "Romboutsia"                     
     ##   [88,] "Corynebacterium"                
-    ##   [89,] NA                               
+    ##   [89,] "Tumebacillus"                   
     ##   [90,] "Granulicatella"                 
     ##   [91,] "Streptococcus"                  
     ##   [92,] "Pseudomonas"                    
@@ -5458,7 +5447,7 @@ unname(taxa)
     ##  [408,] "Pseudomonas"                    
     ##  [409,] "Propionibacterium"              
     ##  [410,] NA                               
-    ##  [411,] "Anaerovorax"                    
+    ##  [411,] NA                               
     ##  [412,] "Streptococcus"                  
     ##  [413,] "Anaerococcus"                   
     ##  [414,] "Peptoniphilus"                  
@@ -5587,7 +5576,7 @@ unname(taxa)
     ##  [537,] "Anaerococcus"                   
     ##  [538,] "Pseudomonas"                    
     ##  [539,] NA                               
-    ##  [540,] NA                               
+    ##  [540,] "Tumebacillus"                   
     ##  [541,] "Pseudomonas"                    
     ##  [542,] "Enterobacter"                   
     ##  [543,] "Enhydrobacter"                  
@@ -5622,7 +5611,7 @@ unname(taxa)
     ##  [572,] "Streptococcus"                  
     ##  [573,] "Gemella"                        
     ##  [574,] NA                               
-    ##  [575,] "Dorea"                          
+    ##  [575,] NA                               
     ##  [576,] "Fusobacterium"                  
     ##  [577,] "Gemella"                        
     ##  [578,] "Intestinibacter"                
@@ -5758,7 +5747,7 @@ unname(taxa)
     ##  [708,] "Ezakiella"                      
     ##  [709,] "Prevotella"                     
     ##  [710,] "Fusobacterium"                  
-    ##  [711,] "Hydrogenophaga"                 
+    ##  [711,] NA                               
     ##  [712,] "Anaerococcus"                   
     ##  [713,] "Acinetobacter"                  
     ##  [714,] "Subdoligranulum"                
@@ -5822,7 +5811,7 @@ unname(taxa)
     ##  [772,] "Prevotella"                     
     ##  [773,] "Butyrivibrio"                   
     ##  [774,] "Bacteroides"                    
-    ##  [775,] NA                               
+    ##  [775,] "Intestinibacter"                
     ##  [776,] "Ilumatobacter"                  
     ##  [777,] "Weissella"                      
     ##  [778,] "Microbacterium"                 
@@ -5850,7 +5839,7 @@ unname(taxa)
     ##  [800,] "Corynebacterium"                
     ##  [801,] NA                               
     ##  [802,] "Rothia"                         
-    ##  [803,] "Enhydrobacter"                  
+    ##  [803,] NA                               
     ##  [804,] "Veillonella"                    
     ##  [805,] "Chryseobacterium"               
     ##  [806,] "Terrabacter"                    
@@ -5985,7 +5974,7 @@ unname(taxa)
     ##  [935,] "Ruminococcus"                   
     ##  [936,] "Buchnera"                       
     ##  [937,] "Staphylococcus"                 
-    ##  [938,] "Tumebacillus"                   
+    ##  [938,] NA                               
     ##  [939,] "Prevotella"                     
     ##  [940,] "Rothia"                         
     ##  [941,] "Epilithonimonas"                
@@ -6075,7 +6064,7 @@ unname(taxa)
     ## [1025,] "Turicibacter"                   
     ## [1026,] "Caulobacter"                    
     ## [1027,] "Kocuria"                        
-    ## [1028,] NA                               
+    ## [1028,] "Actinoplanes"                   
     ## [1029,] "Centipeda"                      
     ## [1030,] "Anaerostipes"                   
     ## [1031,] "Acinetobacter"                  
@@ -6147,7 +6136,7 @@ unname(taxa)
     ## [1097,] "Haemophilus"                    
     ## [1098,] "Phenylobacterium"               
     ## [1099,] "Rothia"                         
-    ## [1100,] NA                               
+    ## [1100,] "Luteimonas"                     
     ## [1101,] "Anaerococcus"                   
     ## [1102,] "Rathayibacter"                  
     ## [1103,] "Anaerococcus"                   
@@ -6179,7 +6168,7 @@ unname(taxa)
     ## [1129,] "Sphingobium"                    
     ## [1130,] "Paracoccus"                     
     ## [1131,] "Marmoricola"                    
-    ## [1132,] NA                               
+    ## [1132,] "Nocardioides"                   
     ## [1133,] NA                               
     ## [1134,] "Sneathia"                       
     ## [1135,] "Peptoniphilus"                  
@@ -6189,9 +6178,9 @@ unname(taxa)
     ## [1139,] NA                               
     ## [1140,] "Knoellia"                       
     ## [1141,] NA                               
-    ## [1142,] "Anaerovorax"                    
-    ## [1143,] "Anaerostipes"                   
-    ## [1144,] NA                               
+    ## [1142,] NA                               
+    ## [1143,] NA                               
+    ## [1144,] "Oscillibacter"                  
     ## [1145,] NA                               
     ## [1146,] "Porphyromonas"                  
     ## [1147,] "Peptoniphilus"                  
@@ -6248,7 +6237,7 @@ unname(taxa)
     ## [1198,] NA                               
     ## [1199,] "Leptotrichia"                   
     ## [1200,] "Capnocytophaga"                 
-    ## [1201,] NA                               
+    ## [1201,] "Alistipes"                      
     ## [1202,] "Parabacteroides"                
     ## [1203,] "Ruminococcus"                   
     ## [1204,] "Selenomonas"                    
@@ -6303,7 +6292,7 @@ unname(taxa)
     ## [1253,] "Armatimonas/Armatimonadetes_gp1"
     ## [1254,] "Brachymonas"                    
     ## [1255,] "Abiotrophia"                    
-    ## [1256,] NA                               
+    ## [1256,] "Flavisolibacter"                
     ## [1257,] "Elizabethkingia"                
     ## [1258,] "Shuttleworthia"                 
     ## [1259,] "Granulicatella"                 
@@ -6365,7 +6354,7 @@ unname(taxa)
     ## [1315,] "Niabella"                       
     ## [1316,] "Aggregatibacter"                
     ## [1317,] "Microbacterium"                 
-    ## [1318,] "Leptotrichia"                   
+    ## [1318,] NA                               
     ## [1319,] NA                               
     ## [1320,] "Cardiobacterium"                
     ## [1321,] "Actinomyces"                    
@@ -6383,7 +6372,7 @@ unname(taxa)
     ## [1333,] "Oscillibacter"                  
     ## [1334,] "Dyadobacter"                    
     ## [1335,] "Segetibacter"                   
-    ## [1336,] NA                               
+    ## [1336,] "Anaerovorax"                    
     ## [1337,] NA                               
     ## [1338,] "Enterococcus"                   
     ## [1339,] NA                               
@@ -6415,7 +6404,7 @@ unname(taxa)
     ## [1365,] NA                               
     ## [1366,] "Atopobium"                      
     ## [1367,] "Ruminococcus"                   
-    ## [1368,] NA                               
+    ## [1368,] "Selenomonas"                    
     ## [1369,] "Neisseria"                      
     ## [1370,] "Peptoniphilus"                  
     ## [1371,] "Pedobacter"                     
@@ -6425,7 +6414,7 @@ unname(taxa)
     ## [1375,] NA                               
     ## [1376,] "Paenibacillus"                  
     ## [1377,] "Paenibacillus"                  
-    ## [1378,] NA                               
+    ## [1378,] "Clostridium_IV"                 
     ## [1379,] "Anaerococcus"                   
     ## [1380,] "Deinococcus"                    
     ## [1381,] NA                               
@@ -6437,7 +6426,7 @@ unname(taxa)
     ## [1387,] "Iamia"                          
     ## [1388,] "Prevotella"                     
     ## [1389,] "Ochrobactrum"                   
-    ## [1390,] NA                               
+    ## [1390,] "Anaerovorax"                    
     ## [1391,] "Leptotrichia"                   
     ## [1392,] "Capnocytophaga"                 
     ## [1393,] NA                               
@@ -6460,7 +6449,7 @@ unname(taxa)
     ## [1410,] "Leptotrichia"                   
     ## [1411,] "Methylobacterium"               
     ## [1412,] "Lactobacillus"                  
-    ## [1413,] NA                               
+    ## [1413,] "Nakamurella"                    
     ## [1414,] "Prevotella"                     
     ## [1415,] "Flectobacillus"                 
     ## [1416,] "Peptoniphilus"                  
@@ -6529,7 +6518,7 @@ unname(taxa)
     ## [1479,] "Anaerococcus"                   
     ## [1480,] "Campylobacter"                  
     ## [1481,] "Prevotella"                     
-    ## [1482,] NA                               
+    ## [1482,] "Arcanobacterium"                
     ## [1483,] "Alloprevotella"                 
     ## [1484,] NA                               
     ## [1485,] "Aeromicrobium"                  
@@ -6541,7 +6530,7 @@ unname(taxa)
     ## [1491,] "Flavobacterium"                 
     ## [1492,] "Centipeda"                      
     ## [1493,] "Actinomyces"                    
-    ## [1494,] NA                               
+    ## [1494,] "Alloprevotella"                 
     ## [1495,] NA                               
     ## [1496,] NA                               
     ## [1497,] "Acinetobacter"                  
@@ -6580,7 +6569,7 @@ unname(taxa)
     ## [1530,] "Cruoricaptor"                   
     ## [1531,] "Chryseobacterium"               
     ## [1532,] "Skermanella"                    
-    ## [1533,] "Corynebacterium"
+    ## [1533,] NA
 
 ``` r
 # we want to export the cleaned, trimmed, filtered, denoised sequence variants
@@ -6642,103 +6631,47 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
 melted_obj <- psmelt(phyloseq_obj)
 ```
 
-``` r
-# This graph represents the abundance of
-# each Phylum that is observed in all of the
-# key samples. This gives us a general idea of
-# the Phyla that we may see in graphs that look
-# at specific key samples
-melted_obj %>%
-  filter(sample_type == "surface") %>%
-  ggplot(aes(x = Phylum,
-             y = Abundance,
-             fill = Phylum)) +
-  geom_col() +
-  ggtitle("Abundance of Phylum in All Key Samples") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
+Results
+=======
 
-![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-1-1.png) **Figure 1**:
+I looked at two individuals in the Fkey sample set and two individuals in the Jkey sample set in correspondence to three keyboards. The data collected from these samples were ran through a high-throughput pyrosequencing method. Using the barcoded pyrosequencing procedure mentioned in the Fierer et al. study with bacterial DNA that was extracted from the swabs, an average of over 1400 bacterial 16S rRNA gene sequences per sample were gather (Fierer *et al.*, 2010). This data was run through the DADA2 pipeline. In checking the quality of the reads through plots, I observed that most reads tend to display a drop off after around 200 bases. In learning the error rates, 28802208 total bases in 125531 reads from 115 samples were used. There was convergence between the estimation of the error rates and the sample composition after 5 rounds. In visualizing there error rates, generally, the black lines match up to the black points in the plots and decrease from left to right. After looking at the error rates, the sequence lengths were looked at through a histogram. The histogram revealed a unimodal distribution from about 190 base pairs to 270 base pairs. The data also showed 1-2 outliers ranging from 140 base pairs to 170 base pairs. Towards the end of the DADA2 pipeline, chimeras were removed. For this study, out of the 1539 input sequences, there were 6 identified bimeras.After removing chimeras, we were left with 99.97% of our cleaned reads.
 
-``` r
-# This bar graph goes into detail about
-# the abundance of Phyla that is seen in
-# the Fkey samples compared to the Jkey
-# samples. Looking at the trends we can
-# think about a specific Phylum that we
-# want to look at
-melted_obj %>%
-  filter(sample_source == "Fkey" |
-           sample_source == "Jkey") %>%
-  ggplot(aes(x = Phylum,
-             y = Abundance,
-             fill = sample_source)) +
-  geom_col(position = position_dodge()) +
-  ggtitle("Abundance of Phylum in Fkey and Jkey Samples") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
+Abundance of Phylum in All Key Samples
+--------------------------------------
 
-![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-2-1.png) **Figure 2**:
+I first analyzed the abundance of sequences of each of the different phylum observed in all of the key samples \[Figure 1\]. In analyzing the individual phylum that were gathered from the key samples, there are 7 that displayed abundance values, meaning that there are 7 different phylum found on all of the different keys. With Actinobacteria having the largest abundance of sequences at around 470-480,000, Firmicutes has the second largest abundance of sequences at around 225,000. Along with this, there were other Phylum that contained abundance values ranging from about 2,000 to 4,500 such as Bacteriodetes, Cyanobacteria/Chloroplast and Proteobacteria. The two Phylum with very similar yet very small abundance values compared to the others at about 500 sequences are Deinococcus-Themus and Fusobacteria.
 
-``` r
-# This graph takes Actinobacteria, the
-# Phylum with the biggest difference between
-# the Fkey and Jkey samples and looks at the
-# Genus associated with it in correspondence to
-# the Fkey and Jkey samples
-melted_obj %>%
-  filter(sample_source == "Fkey" |
-           sample_source == "Jkey") %>%
-  filter(Phylum == "Actinobacteria") %>%
-  ggplot(aes(x = Genus,
-             y = Abundance,
-             fill = sample_source)) +
-  geom_col(position = position_dodge()) +
-  ggtitle("Abundance of Genus in Fkey and Jkey Samples") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
+Abundance of Phylum in Fkey and Jkey Samples
+--------------------------------------------
 
-![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-3-1.png) **Figure 3**:
+Wanting to look deeper at the similarities and differences of keys used between the leftand the right hand, I further analyzed the abundance of sequences of each of the phylum that were gathered from the Fkey and Jkey samples \[Figure 2\]. I decided to analyze the Fkey and Jkey samples because when the hands are in the resting position on the keyboard, the left pointer finger is positioned on the F key, while the right pointer finger is positioned on the J key.
 
-``` r
-# Seeing that there is an obvious difference in
-# the samples through Propionibacterium, this graph
-# focuses on the abundance of Propionibacterium
-# in the Fkey and Jkey samples in terms of
-# the host_subject_id
-melted_obj %>%
-  filter(Genus == "Propionibacterium") %>%
-    filter(sample_source == "Fkey" |
-           sample_source == "Jkey") %>%
-  filter(host_subject_id == "M2" |
-           host_subject_id == "M3" |
-           host_subject_id == "M9") %>%
-  ggplot(aes(x = host_subject_id,
-             y = Abundance,
-             fill = sample_source)) +
-  geom_col(position = position_dodge()) +
-  ggtitle("Abundance of Proponiobacterium
-According to host_subject_id in Fkey and Jkey Samples") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
+In looking at the comparison of abundances of different phylum in the Fkey and Jkey samples, both samples generally contain similar values for Bacteriodetes, Cyanobacteria/Choloroplast, Proteobacteria and Firmicutues. These values ranged from 25 to 100. Firmicutes in particular, displays almost exact abundance values for both the Fkey and Jkey samples. Another significant trend that I observed was that Fusobacteria is a phyla that is only observed in the Jkey samples and not the Fkey samples. The most important trend I noticed though, is the large difference in abundance values between the Actinobacteria sequences in Fkey samples compared to the Jkey samples. While the Fkey samples have an abundance of sequences for Actinobacteria of about 750, Jkey samples have an abundance value for Actinobacteria of about only 525.
 
-![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-4-1.png) **Figure 4**:
+Abundance of Genus in Fkey and Jkey Samples
+-------------------------------------------
 
-``` r
-# This table gives a summary of the results
-# of the previous graph. With this, you are
-# able to specifically reference the difference
-# between the abundances
-melted_obj %>%
-  filter(Genus == "Propionibacterium") %>%
-  filter(sample_source == "Fkey" |
-           sample_source == "Jkey") %>%
-  filter(host_subject_id == "M2" |
-           host_subject_id == "M3" |
-           host_subject_id == "M9") %>%
-  group_by(host_subject_id, sample_source) %>%
-  summarize(sum_seqs = sum(Abundance))
-```
+With the major difference between the abundance values of observed Actinobacteria in the Fkey samples vs. the Jkey samples, I wanted to look further into why this may be. To do so, I generated a figure to represent the abundance of different Genera in the Fkey samples compared to the Jkey samples \[Figure 3\]. Analyzing this data, Actinomyces, Collinsella, Corynebacterium, Rothia and an NA group are the genera that are similar in abundance values in both sets of samples. The abundance values of these genera ranged from about 10 sequences to 50 sequences. Along with this, there are also genera that were seen stricly in one of the sample sets but not the other. Specifically, Segriliparus, Dermabacter and Brevibacterium are all genera with small abundance values of around what looks to be of about 30 sequences and less seen in Fkey samples only. In contrast to this, Dietzia is the only genus with a small abundance value of what looks to be less than 10 sequences in the Jkey samples. The most significant pieces of data though, are the abundance values of Propionobacterium in the two sets of samples. In further detail, the Fkey samples convey a much higher abundance of sequences for Propionobacterium at about 700 sequences. The Jkey samples however, only displays an abundace of about 325 sequences for the same genus.
+
+Abundance of *Propionobacterium* According to host\_subject\_id in Fkey and Jkey Samples
+----------------------------------------------------------------------------------------
+
+Because of the major difference in abundance values of *Propionobacterium* in Fkey samples compared to Jkey samples, I took a closer look at the abundance of *Propionobacterium* according to host\_subject\_id in these samples \[Figure 4\]. Specific trends seen among the host subjects would be able to provide us with an idea of which specific subject may have led to such a large difference in the abundance of *Propionobacterium* and Actinobacteria between the two sample sets.
+
+For the Fkey samples, data was gathered from the two subjects of M2 and M9. For the Jkey samples on the other hand, data was collected from the two subjects of M2 and M3. The host subject of M2 provides data for both the Fkey and Jkey samples. In both sample sets, very similar abundance values around 140-160 sequences for *Propionobacterium* of the M2 subject are seen. Providing data for the Jkey samples only, the M3 subject reveals an abundance value of approximately 325 sequences for the specific genus. Lastly, the M9 subject provides data strictly for the Fkey samples. The M9 subject reveals the highest abundance value of about 750 sequences for *Propionobacterium*.
+
+Summary Table of the Abundance of Sequences of *Propionobacterium* According to host\_subject\_id in the Fkey and Jkey Samples
+------------------------------------------------------------------------------------------------------------------------------
+
+To summarize and go into more detail about the findings that were gathered in Figure 4, I created a summary table \[Table 1\]. The M2 subject in terms of the Fkey samples have an abundance of 142 sequences corresponding to *Propionobacterium*. The same subject in the Jkey samples have a similar abundance of 158 sequences relating to the same genus. The M3 subject who was studied only in terms of the Jkey samples displays an abundance of 327 sequences for *Propionobacterium*. Lastly, significantly higher than the other values, the M9 subject, looked at in terms of the Fkey samples reveals an abundance value of 752 sequences for the genus.
+
+![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-1-1.png) **Figure 1**: Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in All of the Key Samples. Abundance value of Actinobacteria reads to be the highest. Firmicutes reads to be the second highest with an abundance value at about half of what is seen with Actinobacteria. Other phylumm observed include Bacteriodetes, Cyanobacteria/Chloroplas, Deinococcus-Themus, Fusobacteria, and Proteobacteria at relatively lower abundance values.
+
+![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-2-1.png) **Figure 2**: Abundance of the Sequences Corresponding to the Different Phylum That Are Observed in the Fkey Samples Compared to the Jkey Samples. The significant difference between the abundances of sequences relating to Actinobacteria in the Fkey samples vs. the Jkey samples stands out. Abundance values in both sample sets for Bacteriodetes, Cyanobacteria/Chloroplast, Firmicutes and Proteobacteria are relatively similar at much lower values compared to Actinobacteria. Only Jkey samples revealed Fusobacteria.
+
+![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-3-1.png) **Figure 3**: Abundance of the Sequences Corresponding to Different Genera That Are Observed in the Fkey Samples Compared to the Jkey Samples. The major difference between the abundances of sequences relating to *Propionibacterium* in the Fkey samples and the Jkey samples is the important takeaway. Other genera such as Actinomyces, Collinsella, Corynbacterium, Rotina, and NA have similar yet significantly lower values in both sample sets compared to the value seen with *Propionibacterium*. *Brevibacterium*, *Dermabacter*, and *Segniliparus* revealed abundance values for Fkey samples only, while *Dietzia* conveyed an abundance value for Jkey samples only.
+
+![](Analysis_Report_01_amplicons_files/figure-markdown_github/bar-graph-4-1.png) **Figure 4**: Abundance of Sequences Corresponding to *Proponiobacterium* According to host\_subject\_id in the Fkey Samples Compared to the Jkey Samples. The M9 individual holds the highest abundance value in correspondence to the Fkey samples and *Propionibacterium*. The M3 individual reveals the second highest abundance of sequences relating to *Propionibacterium* and Jkey samples. The M2 individual, studied in terms of both samples, conveyed similar abundance values of *Proponiobacterium*.
 
     ## # A tibble: 4 x 3
     ## # Groups:   host_subject_id [?]
@@ -6749,16 +6682,40 @@ melted_obj %>%
     ## 3 M3              Jkey               327
     ## 4 M9              Fkey               752
 
-**Table 1**:
+**Table 1**: Summary of the Abundace of Sequences of *Propionibacterium* According to host\_subject\_id in the Fkey Samples Compared to the Jkey Samples. Individual M9 studied in Fkey samples held the high sequence number at 752. Individual M3 studied in only Jkey samples held the second highest sequence number at 327. Individual M2, who was looked at in both sample sets revealed similar sequence numbers at 142 for the Fkey samples and 158 for the Jkey samples.
 
 Discussion
 ==========
 
-Add around 2-3 pages interpreting your results and considering future directions one might take in analyzing these data.
+Figure Analysis
+---------------
+
+In this study, we focused on the analysis of the data in terms of the differences between the Fkey samples and the Jkey samples. The F keys were looked at in comparison to the J keys because these two keys are associated with the left pointer finger and the right pointer finger. In terms of the analysis of the Fierer et al. study, my first primary question asked if there would be a difference between the bacterial communities' taxonomy of the the left pointer finger vs. the right pointer finger, more specifically looked at in terms of the Fkey samples and Jkey samples. My second question asked about the variation of abundance of focal genera, *Proponiobacterium* in this case, between the individuals and their correlating keys. For the first question, I hypothesized that the two sample sets would reveal generally similar or the same information in terms of their taxonomy. With the second question, I hypothesized that variation in indiviuals studied in terms of both sample sets would reveal little variation between abundances of the focal genera and each sample, while there would be large variation between the abundance values of the focal genera of each separate individual.
+
+Before studying the specific key samples, I first took a closer look at the abundances of different phylum in all of the key samples. In observing Actinobacteria, Bacteriodetes, Cyanobacteria/Chloroplast, Deinococcus-Themus, Firmicutes, Fusobacteria, and Proteobacteria in this analysis, I was led to the idea that these phylum would be observed in the Fkey and Jkey samples as well, but possibly in different abundance values \[Figure 1\]. With this information, I then looked more closely at a comparison of the abundances of different phylum in the Fkey samples and the Jkey samples. These results revealed relatively similar abundance values in both samples for Bacteriodetes, Cynanobacteria/Chloroplast, Firmicutes and Proteobacteria. The Fusobacteria phyla only showed up in Jkey samples. The most significant information gathered from this data however, was the fact that the abundance value of Actinobacteria in the Fkey samples was about 400 sequences higher than the abundance of sequences for Actinobacteria in the Jkey samples \[Figure 2\]. This information stood out and caused me to wonder why there would be such a large difference between the two, especially if they are samples of keys that deal with the same finger, but on different sides of the keyboard. A large variation between the abundance values in both sample sets could have been related to a trend within a specific genus in the samples. Specifically, because the Fkey sample contained a larger abundance value for Actinobacteria, this could be related to a larger abundance value of a spefic genus in these samples as well. To test this theory, I analyzed the abundance of different genera in the Fkey and Jkey samples \[Figure 3\]. Looking at the results, there were multiple genera that held similar abundance values for both sample sets. Along with this, there were also multiple genera that were found strictly in the Fkey samples only or in the Jkey samples only. Relating back to the previous analysis though, of the significant difference between the abundance values of Actinobacteria in both samples, a piece of information that may have led to this result is the major difference in abundance values of *Propionobacterium* in the samples. This piece of information is important because it tells us that in the Fkey samples, there is a specific factor that could be affecting the abundance values of *Propionobacterium* and therfore causing an overall difference between the two key sample sets, regardless that they are studying the keys relating to the same fingers but on different hands. Looking at the specific individuals that were tested in both the Fkey samples and Jkey samples in terms of the abundance of sequences relating to *Proponiobacterium*, there were three of them \[Figure 4\]. While M2 was studied in both of the sample sets, M3 was looked at in terms of the Jkey samples and M9 was looked at in terms of the Fkey samples. Further analyzing the abundance values, M9 had the largest value compared to the two other individuals and the abundance values of *Proponiobacterium* for both key samples for the M2 individual were very similar. Because of this, I was able to conclude that there is large variation in the abundance values between separate individuals, but little variation within the same individuals studied in terms of both key samples. M9 in particular, is also the individual that caused us to see a significant difference in the abundance of *Proponiobacterium* and Actinobacteria between the two sample sets in the first place. This makes sense as M9 correlates to the Fkey samples, and the Fkey sample abundances of sequences for *Proponiobacterium* and Actinobacteria held much higher values compared to the Jkey samples. Looking at the summary table of the data gathered from Figure 4 \[Table 1\], I observed the specific number of sequences that relate to the host\_subject\_id and *Proponiobacterium*. With 752 sequences with M9 in relation to the Fkey samples, this caused a major difference of the abundance of genus and phylum when compared to the 327 sequences with M3 in the Jkey samples.
+
+With these central questions and hypotheses, the data supported the fact that there was generally similar relations in terms of the taxonomy between the Fkey samples and Jkey samples. The data also supported the fact that there was similar abundance values of *Proponibacterium* between Fkey samples and Jkey samples within the same individual. With one individual who was studied only in terms of the Fkey samples vs. another individual who was studied only in terms of the Jkey samples, though, statistical analysis could not be provided as the individuals were not looked at in both key samples. With this being said, the individual studied at the Fkey level did reveal a much higher abundance compared to the individual studied at the Jkey level, allowing for the conclusion that there *is* variation between different individuals. Though there is not a major difference in the abundance of *Propionobacterium* within the same individual studied in terms of both sample sets, the study of different individuals *do* convey variation between each other.
+
+While the bacteria on one individuals' left vs. right hand is generally the same, abundance of bacteria varies and is very diverse in every each individual in the community.The understanding of all of this information is important because it gives us an idea about the bacteria that is found on our own bodies, specifically our left vs. right hands, which can be both helpful and detrimental to our health. Understanding the differences or similarities on our own bodies can allow for us to act in everyday lives accordingly. To work towards and discover more about the information relating to this importance, further studies can study the data gathered in more specific ways.
+
+Future References
+-----------------
+
+In comparing the phylum and genus of the right pointer finger vs. the left pointer finger, futher studies can be done analyzing the differences between individuals who were all looked at in the same set of key samples. Specifically, with the Fkeys and the Jkeys, only the M2 individual was studied in terms of both sample sets, while M3 and M9 were only looked at in terms of either the Fkey samples or the Jkey samples. In the future, looking at the D and K keys, for example, if all three individuals looked at have information about the taxonomy within both the Dkey samples and Kkey samples, then a more specific comparison between the left hand vs. the right hand can be made. Comparing the data gathered from different sets of keys (D vs. K, S vs. L, etc.) would give us more information about the possibly diverse set of bacterial phylum, which could then lead to more conclusions about bacteria in relation to humans in general. Also, in further detail, it may be possible to pick up certain patterns within that larger amount of data, such as higher abundance values of certain phylum on one side of the keyboard vs. the other, etc. because more keys can be compared in terms of the left side of the keyboard vs. the right. Along with this, in future analyses relating to the Fierer et al. study, it may be interesting to take a closer look at the space bar as well. Because the space bar is most commonly used by both your left thumb and your right thumb, it can provide information about one key that contains bacteria from two separate hands. Comparing this information to keys that are specifically used by one finger on each hand can possibly provide interesting findings.
 
 Sources Cited
 =============
 
 Callahan,B.J. *et al.* (2016) DADA2: High-resolution sample inference from illumina amplicon data. *Nature Methods*, **13**, 581–583.
 
+Fierer,N. *et al.* (2010) Forensic identification using skin bacterial communities. *Proceedings of the National Academy of Sciences*, **107**, 6477–6481.
+
+Grice,E.A. and Segre,J.A. (2011) The skin microbiome. *Nature Reviews Microbiology*, **9**, 244.
+
+May,R.M. (1988) How many species are there on earth? *Science*, **241**, 1441–1449.
+
 McMurdie,P.J. and Holmes,S. (2013) Phyloseq: An r package for reproducible interactive analysis and graphics of microbiome census data. *PLoS ONE*, **8**, e61217.
+
+Quigley,E.M. (2013) Gut bacteria in health and disease. *Gastroenterology & hepatology*, **9**, 560.
+
+Stansfeld,S. *et al.* (1995) Sickness absence for psychiatric illness: The whitehall ii study. *Social science & medicine*, **40**, 189–197.
