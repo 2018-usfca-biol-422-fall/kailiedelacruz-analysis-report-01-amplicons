@@ -1,5 +1,5 @@
 ---
-title: "Analysis Report 1: Variation in Abundance of Propionobacterium Among Individuals Studied In Terms of Fkey Samples vs. Individuals Studied In Terms of Jkey Samples but Not in Indiviauls That Are Studied In terms of Both Fkey and Jkey Sample Sets"
+title: "Analysis Report 1: Variation in Abundance of Propionobacterium Among Individuals Studied In Terms of Fkey Samples vs. Individuals Studied In Terms of Jkey Samples but Not in Individuals That Are Studied In terms of Both Fkey and Jkey Sample Sets"
 author: "Kailie Dela Cruz"
 date: "October 20, 2017"
 output: github_document
@@ -340,9 +340,9 @@ To summarize and go into more detail about the findings that were gathered in Fi
 # each Phylum that is observed in all of the
 # key samples. This gives us a general idea of
 # the Phyla that we may see in graphs that look
-# at specific key samples. We could have also filtered 
+# at specific key samples. We could have also filtered
 # finger_tip in sample_source and we would have obtained
-# the same results 
+# the same results
 melted_obj %>%
   filter(sample_type == "surface") %>%
   ggplot(aes(x = Phylum,
@@ -377,8 +377,8 @@ melted_obj %>%
 # Phylum with the biggest difference between
 # the Fkey and Jkey samples and looks at the
 # Genus associated with it in correspondence to
-# the Fkey and Jkey samples. This is why we filter the 
-# Fkey, Jkey and Actinobacteria 
+# the Fkey and Jkey samples. This is why we filter the
+# Fkey, Jkey and Actinobacteria
 melted_obj %>%
   filter(sample_source == "Fkey" |
            sample_source == "Jkey") %>%
@@ -397,9 +397,9 @@ melted_obj %>%
 # the samples through Propionibacterium, this graph
 # focuses on the abundance of Propionibacterium
 # in the Fkey and Jkey samples in terms of
-# the host_subject_id. M2 Corresponds to Jkey samples, 
-# M3 corresponds to Jkey and Fkey samples and M9 
-# corresponds to Fkey sampeles 
+# the host_subject_id. M2 Corresponds to Jkey samples,
+# M3 corresponds to Jkey and Fkey samples and M9
+# corresponds to Fkey samples
 melted_obj %>%
   filter(Genus == "Propionibacterium") %>%
     filter(sample_source == "Fkey" |
